@@ -2,7 +2,7 @@
 data:
   # mysql MySQL
   mysql:
-    dsn: root:Mysql.123456@tcp(127.0.0.1:3306)/test?charset=utf8&timeout=30s&parseTime=True
+    dsn: root:Mysql.123456@tcp(127.0.0.1:3306)/go_srv_user?charset=utf8&timeout=30s&parseTime=True
     # slow_threshold 慢查询时间
     slow_threshold: 0.1s
     logger_enable: true
