@@ -2,7 +2,9 @@ package setup
 
 import (
 	strerrors "errors"
+	"fmt"
 	"io"
+	"strings"
 
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-redis/redis/v8"
@@ -33,8 +35,25 @@ func IsUninitializedError(err error) bool {
 	return strerrors.Is(pkgerrors.Cause(err), ErrUninitialized)
 }
 
-// Args 参数
-type Args interface {
+// LoggerPrefixField with logger fields.
+type LoggerPrefixField struct {
+	AppName    string `json:"name"`
+	AppVersion string `json:"version"`
+	AppEnv     string `json:"env"`
+	Hostname   string `json:"hostname"`
+	ServerIP   string `json:"serverIP"`
+}
+
+// String returns the string representation of LoggerPrefixField.
+func (s *LoggerPrefixField) String() string {
+	strSlice := []string{
+		"name:" + fmt.Sprintf("%q", s.AppName),
+		"version:" + fmt.Sprintf("%q", s.AppVersion),
+		"env:" + fmt.Sprintf("%q", s.AppEnv),
+		"hostname:" + fmt.Sprintf("%q", s.Hostname),
+		"serverIP:" + fmt.Sprintf("%q", s.ServerIP),
+	}
+	return strings.Join(strSlice, " ")
 }
 
 // Config 配置
@@ -57,6 +76,8 @@ type Config interface {
 	LoggerConfigForFile() *confv1.Log_File
 	// MySQLConfig mysql配置
 	MySQLConfig() *confv1.Data_MySQL
+	// PostgresConfig postgres配置
+	PostgresConfig() *confv1.Data_PSQL
 	// RedisConfig redis配置
 	RedisConfig() *confv1.Data_Redis
 	// HTTPConfig http配置
@@ -70,6 +91,8 @@ type Modules interface {
 	// Config 配置
 	Config
 
+	// LoggerPrefixField 日志前缀字段
+	LoggerPrefixField() *LoggerPrefixField
 	// LoggerFileWriter 文件日志写手柄
 	LoggerFileWriter() (io.Writer, error)
 	// Logger 日志处理实例 runtime.caller.skip + 1
@@ -88,6 +111,6 @@ type Modules interface {
 	// RedisClient redis 客户端
 	RedisClient() (*redis.Client, error)
 
-	// 关闭
+	// Close 关闭
 	Close() error
 }

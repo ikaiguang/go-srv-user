@@ -13,6 +13,10 @@ import (
 type modules struct {
 	Config
 
+	// loggerPrefixFieldMutex 日志前缀
+	loggerPrefixFieldMutex sync.Once
+	loggerPrefixField      *LoggerPrefixField
+
 	// loggerFileWriterMutex 日志文件写手柄
 	loggerFileWriterMutex sync.Once
 	loggerFileWriter      io.Writer
@@ -34,6 +38,10 @@ type modules struct {
 	// mysqlGormMutex mysql gorm
 	mysqlGormMutex sync.Once
 	mysqlGormDB    *gorm.DB
+
+	// postgresGormMutex mysql gorm
+	postgresGormMutex sync.Once
+	postgresGormDB    *gorm.DB
 
 	// redisClientMutex redis客户端
 	redisClientMutex sync.Once
