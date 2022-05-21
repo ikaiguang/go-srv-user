@@ -6,7 +6,6 @@ import (
 	"github.com/go-kratos/kratos/v2/middleware"
 	"github.com/go-kratos/kratos/v2/middleware/recovery"
 	"github.com/go-kratos/kratos/v2/transport/grpc"
-
 	middlewareutil "github.com/ikaiguang/go-srv-kit/kratos/middleware"
 	"github.com/ikaiguang/go-srv-user/internal/setup"
 )
@@ -38,7 +37,7 @@ func NewGRPCServer(modulesHandler setup.Modules) (srv *grpc.Server, err error) {
 
 	// ===== 中间件 =====
 	var middlewareSlice = []middleware.Middleware{
-		recovery.Recovery(),
+		recovery.Recovery(recovery.WithLogger(logger)),
 	}
 	// 中间件日志
 	loggerMiddle, _, err := modulesHandler.LoggerMiddleware()
