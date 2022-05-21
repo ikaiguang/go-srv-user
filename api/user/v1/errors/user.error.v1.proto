@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package user.api.config.usererrorv1;
+
+// 多语言特定包名，用于源代码引用
+option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/errors;usererrorv1";
+option java_multiple_files = true;
+option java_package = "user.api.user.usererrorv1";
+option objc_class_prefix = "UserAPI";
+
+// UserErrorEnum 用户错误
+message UserErrorEnum {
+  // UserError 用户错误
+  enum UserError {
+    // UNSPECIFIED 初始化
+    UNSPECIFIED = 0;
+
+    // NOT_EXIST 用户不存在
+    NOT_EXIST = 1;
+    // EXIST 用户已存在
+    EXIST = 2;
+    // NAME_INVALID 用户名不合法
+    NAME_INVALID = 3;
+    // NAME_EXIST 用户名已存在
+    NAME_EXIST = 4;
+    // PASSWORD_INVALID 用户密码不合法
+    PASSWORD_INVALID = 5;
+  }
+}
+

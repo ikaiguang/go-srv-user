@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package user.api.config.userenumv1;
+
+// 多语言特定包名，用于源代码引用
+option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/enums;userenumv1";
+option java_multiple_files = true;
+option java_package = "user.api.user.userenumv1";
+option objc_class_prefix = "UserAPI";
+
+// UserStatusEnum 用户状态
+message UserStatusEnum {
+  // UserStatus 枚举值
+  enum UserStatus {
+    // UNSPECIFIED 初始化
+    UNSPECIFIED = 0;
+
+    // NORMAL 正常
+    NORMAL = 1;
+    // DISABLE 禁用
+    DISABLE = 2;
+  }
+}
+
+// UserSexEnum 用户性别
+message UserSexEnum {
+  // UserSex 枚举值
+  enum UserSex {
+    // UNSPECIFIED 初始化
+    UNSPECIFIED = 0;
+
+    // MALE 男
+    MALE = 1;
+    // FEMALE 女
+    FEMALE = 2;
+    // SECRET 密码
+    SECRET = 3;
+  }
+}

@@ -8,7 +8,7 @@ require (
 	github.com/go-resty/resty/v2 v2.7.0
 	github.com/google/wire v0.5.0
 	github.com/gorilla/websocket v1.5.0
-	github.com/ikaiguang/go-srv-kit v0.0.55
+	github.com/ikaiguang/go-srv-kit v0.0.56
 	github.com/pkg/errors v0.9.1
 	github.com/rs/xid v1.4.0
 	github.com/stretchr/testify v1.7.1
