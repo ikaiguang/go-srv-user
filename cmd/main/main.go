@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/go-kratos/kratos/v2"
+
 	debugutil "github.com/ikaiguang/go-srv-kit/debug"
 	routes "github.com/ikaiguang/go-srv-user/internal/route"
 	servers "github.com/ikaiguang/go-srv-user/internal/server"

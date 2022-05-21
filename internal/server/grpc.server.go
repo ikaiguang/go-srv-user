@@ -6,6 +6,7 @@ import (
 	"github.com/go-kratos/kratos/v2/middleware"
 	"github.com/go-kratos/kratos/v2/middleware/recovery"
 	"github.com/go-kratos/kratos/v2/transport/grpc"
+
 	middlewareutil "github.com/ikaiguang/go-srv-kit/kratos/middleware"
 	"github.com/ikaiguang/go-srv-user/internal/setup"
 )
