@@ -8,10 +8,13 @@ option java_multiple_files = true;
 option java_package = "user.api.user.userv1";
 option objc_class_prefix = "UserAPI";
 
+import "github.com/ikaiguang/go-srv-user/api/user/v1/enums/user.enum.v1.proto";
+
 // LoginRequest 用户登录
 message LoginRequest {
   string username = 1;
   string password = 2;
+  string code = 3;
 }
 
 // LoginResponse 用户登录
@@ -23,6 +26,7 @@ message LoginResponse {
 message RegisterRequest {
   string username = 1;
   string password = 2;
+  string code = 3;
 }
 
 // RegisterResponse 用户注册
@@ -32,19 +36,24 @@ message RegisterResponse {
 
 // InfoRequest 用户信息
 message InfoRequest {
-  string token = 1;
 }
 
-// InfoResponse 用户信息
-message InfoResponse {
-  string username = 1;
+// Info 用户信息
+message Info {
+  uint64 id = 1;
+  string user_mobile = 2;
+  string user_email = 3;
+  string user_nickname = 4;
+  string user_avatar = 5;
+  userenumv1.UserSexEnum.UserSex user_sex = 6;
+  userenumv1.UserStatusEnum.UserStatus user_status = 7;
 }
 
 // ChangePasswordRequest 修改密码
 message ChangePasswordRequest {
-  string token = 1;
-  string old_password = 2;
-  string new_password = 3;
+  string old_password = 1;
+  string new_password = 2;
+  string new_password_confirm = 3;
 }
 
 // ChangePasswordResponse 修改密码
@@ -53,8 +62,7 @@ message ChangePasswordResponse {
 
 // ChangeAvatarRequest 修改头像
 message ChangeAvatarRequest {
-  string token = 1;
-  string avatar = 2;
+  string user_avatar = 2;
 }
 
 // ChangeAvatarResponse 修改头像
@@ -63,8 +71,7 @@ message ChangeAvatarResponse {
 
 // ChangeMobileRequest 修改手机号
 message ChangeMobileRequest {
-  string token = 1;
-  string mobile = 2;
+  string user_mobile = 2;
 }
 
 // ChangeMobileResponse 修改手机号
@@ -73,8 +80,7 @@ message ChangeMobileResponse {
 
 // ChangeEmailRequest 修改邮箱
 message ChangeEmailRequest {
-  string token = 1;
-  string email = 2;
+  string user_email = 2;
 }
 
 // ChangeEmailResponse 修改邮箱
@@ -83,8 +89,7 @@ message ChangeEmailResponse {
 
 // ChangeNicknameRequest 修改昵称
 message ChangeNicknameRequest {
-  string token = 1;
-  string nickname = 2;
+  string user_nickname = 2;
 }
 
 // ChangeNicknameResponse 修改昵称
@@ -93,19 +98,9 @@ message ChangeNicknameResponse {
 
 // ChangeSexRequest 修改性别
 message ChangeSexRequest {
-  string token = 1;
+  userenumv1.UserSexEnum.UserSex user_sex = 6;
 }
 
 // ChangeSexResponse 修改性别
 message ChangeSexResponse{
-
-}
-
-// ChangeStatusRequest 修改状态
-message ChangeStatusRequest {
-  string token = 1;
-}
-
-// ChangeStatusResponse 修改状态
-message ChangeStatusResponse {
 }

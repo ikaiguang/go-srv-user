@@ -12,13 +12,19 @@ option objc_class_prefix = "UserAPI";
 message UserStatusEnum {
   // UserStatus 枚举值
   enum UserStatus {
-    // UNSPECIFIED 初始化
+    // UNSPECIFIED 未指定
     UNSPECIFIED = 0;
 
-    // NORMAL 正常
-    NORMAL = 1;
+    // INACTIVATED 未激活
+    INACTIVATED = 1;
+    // ENABLE 启用
+    ENABLE = 2;
     // DISABLE 禁用
-    DISABLE = 2;
+    DISABLE = 3;
+    // BLACKLIST 黑名单
+    BLACKLIST = 4;
+    // DELETED 已删除
+    DELETED = 5;
   }
 }
 
@@ -26,7 +32,7 @@ message UserStatusEnum {
 message UserSexEnum {
   // UserSex 枚举值
   enum UserSex {
-    // UNSPECIFIED 初始化
+    // UNSPECIFIED 未指定
     UNSPECIFIED = 0;
 
     // MALE 男

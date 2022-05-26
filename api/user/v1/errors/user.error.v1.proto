@@ -8,23 +8,20 @@ option java_multiple_files = true;
 option java_package = "user.api.user.usererrorv1";
 option objc_class_prefix = "UserAPI";
 
-// UserErrorEnum 用户错误
-message UserErrorEnum {
-  // UserError 用户错误
-  enum UserError {
-    // UNSPECIFIED 初始化
-    UNSPECIFIED = 0;
+// ERROR 用户错误
+enum ERROR {
+  // UNKNOWN 未知错误
+  UNKNOWN = 0;
 
-    // NOT_EXIST 用户不存在
-    NOT_EXIST = 1;
-    // EXIST 用户已存在
-    EXIST = 2;
-    // NAME_INVALID 用户名不合法
-    NAME_INVALID = 3;
-    // NAME_EXIST 用户名已存在
-    NAME_EXIST = 4;
-    // PASSWORD_INVALID 用户密码不合法
-    PASSWORD_INVALID = 5;
-  }
+  // USER_NOT_EXIST 用户不存在
+  USER_NOT_EXIST = 1;
+  // USER_EXIST 用户已存在
+  USER_EXIST = 2;
+  // USER_NAME_INVALID 用户名不合法
+  USER_NAME_INVALID = 3;
+  // USER_NAME_EXIST 用户名已存在
+  USER_NAME_EXIST = 4;
+  // USER_PASSWORD_INVALID 用户密码不合法
+  USER_PASSWORD_INVALID = 5;
 }
 

@@ -19,16 +19,16 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// SrvUserServiceClient is the client API for SrvUserService service.
+// SrvUserClient is the client API for SrvUser service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type SrvUserServiceClient interface {
+type SrvUserClient interface {
 	// Login 用户登录
 	Login(ctx context.Context, in *resources.LoginRequest, opts ...grpc.CallOption) (*resources.LoginResponse, error)
 	// Register 用户注册
 	Register(ctx context.Context, in *resources.RegisterRequest, opts ...grpc.CallOption) (*resources.RegisterResponse, error)
 	// Info 用户信息
-	Info(ctx context.Context, in *resources.InfoRequest, opts ...grpc.CallOption) (*resources.InfoResponse, error)
+	Info(ctx context.Context, in *resources.InfoRequest, opts ...grpc.CallOption) (*resources.Info, error)
 	// ChangePassword 用户修改密码
 	ChangePassword(ctx context.Context, in *resources.ChangePasswordRequest, opts ...grpc.CallOption) (*resources.ChangePasswordResponse, error)
 	// ChangeAvatar 用户修改头像
@@ -41,118 +41,107 @@ type SrvUserServiceClient interface {
 	ChangeNickname(ctx context.Context, in *resources.ChangeNicknameRequest, opts ...grpc.CallOption) (*resources.ChangeNicknameResponse, error)
 	// ChangeSex 用户修改性别
 	ChangeSex(ctx context.Context, in *resources.ChangeSexRequest, opts ...grpc.CallOption) (*resources.ChangeSexResponse, error)
-	// ChangeStatus 用户修改状态
-	ChangeStatus(ctx context.Context, in *resources.ChangeStatusRequest, opts ...grpc.CallOption) (*resources.ChangeStatusResponse, error)
 }
 
-type srvUserServiceClient struct {
+type srvUserClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewSrvUserServiceClient(cc grpc.ClientConnInterface) SrvUserServiceClient {
-	return &srvUserServiceClient{cc}
+func NewSrvUserClient(cc grpc.ClientConnInterface) SrvUserClient {
+	return &srvUserClient{cc}
 }
 
-func (c *srvUserServiceClient) Login(ctx context.Context, in *resources.LoginRequest, opts ...grpc.CallOption) (*resources.LoginResponse, error) {
+func (c *srvUserClient) Login(ctx context.Context, in *resources.LoginRequest, opts ...grpc.CallOption) (*resources.LoginResponse, error) {
 	out := new(resources.LoginResponse)
-	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUserService/Login", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUser/Login", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *srvUserServiceClient) Register(ctx context.Context, in *resources.RegisterRequest, opts ...grpc.CallOption) (*resources.RegisterResponse, error) {
+func (c *srvUserClient) Register(ctx context.Context, in *resources.RegisterRequest, opts ...grpc.CallOption) (*resources.RegisterResponse, error) {
 	out := new(resources.RegisterResponse)
-	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUserService/Register", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUser/Register", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *srvUserServiceClient) Info(ctx context.Context, in *resources.InfoRequest, opts ...grpc.CallOption) (*resources.InfoResponse, error) {
-	out := new(resources.InfoResponse)
-	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUserService/Info", in, out, opts...)
+func (c *srvUserClient) Info(ctx context.Context, in *resources.InfoRequest, opts ...grpc.CallOption) (*resources.Info, error) {
+	out := new(resources.Info)
+	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUser/Info", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *srvUserServiceClient) ChangePassword(ctx context.Context, in *resources.ChangePasswordRequest, opts ...grpc.CallOption) (*resources.ChangePasswordResponse, error) {
+func (c *srvUserClient) ChangePassword(ctx context.Context, in *resources.ChangePasswordRequest, opts ...grpc.CallOption) (*resources.ChangePasswordResponse, error) {
 	out := new(resources.ChangePasswordResponse)
-	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUserService/ChangePassword", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUser/ChangePassword", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *srvUserServiceClient) ChangeAvatar(ctx context.Context, in *resources.ChangeAvatarRequest, opts ...grpc.CallOption) (*resources.ChangeAvatarResponse, error) {
+func (c *srvUserClient) ChangeAvatar(ctx context.Context, in *resources.ChangeAvatarRequest, opts ...grpc.CallOption) (*resources.ChangeAvatarResponse, error) {
 	out := new(resources.ChangeAvatarResponse)
-	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUserService/ChangeAvatar", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUser/ChangeAvatar", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *srvUserServiceClient) ChangeMobile(ctx context.Context, in *resources.ChangeMobileRequest, opts ...grpc.CallOption) (*resources.ChangeMobileResponse, error) {
+func (c *srvUserClient) ChangeMobile(ctx context.Context, in *resources.ChangeMobileRequest, opts ...grpc.CallOption) (*resources.ChangeMobileResponse, error) {
 	out := new(resources.ChangeMobileResponse)
-	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUserService/ChangeMobile", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUser/ChangeMobile", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *srvUserServiceClient) ChangeEmail(ctx context.Context, in *resources.ChangeEmailRequest, opts ...grpc.CallOption) (*resources.ChangeEmailResponse, error) {
+func (c *srvUserClient) ChangeEmail(ctx context.Context, in *resources.ChangeEmailRequest, opts ...grpc.CallOption) (*resources.ChangeEmailResponse, error) {
 	out := new(resources.ChangeEmailResponse)
-	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUserService/ChangeEmail", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUser/ChangeEmail", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *srvUserServiceClient) ChangeNickname(ctx context.Context, in *resources.ChangeNicknameRequest, opts ...grpc.CallOption) (*resources.ChangeNicknameResponse, error) {
+func (c *srvUserClient) ChangeNickname(ctx context.Context, in *resources.ChangeNicknameRequest, opts ...grpc.CallOption) (*resources.ChangeNicknameResponse, error) {
 	out := new(resources.ChangeNicknameResponse)
-	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUserService/ChangeNickname", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUser/ChangeNickname", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *srvUserServiceClient) ChangeSex(ctx context.Context, in *resources.ChangeSexRequest, opts ...grpc.CallOption) (*resources.ChangeSexResponse, error) {
+func (c *srvUserClient) ChangeSex(ctx context.Context, in *resources.ChangeSexRequest, opts ...grpc.CallOption) (*resources.ChangeSexResponse, error) {
 	out := new(resources.ChangeSexResponse)
-	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUserService/ChangeSex", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUser/ChangeSex", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *srvUserServiceClient) ChangeStatus(ctx context.Context, in *resources.ChangeStatusRequest, opts ...grpc.CallOption) (*resources.ChangeStatusResponse, error) {
-	out := new(resources.ChangeStatusResponse)
-	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUserService/ChangeStatus", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// SrvUserServiceServer is the server API for SrvUserService service.
-// All implementations must embed UnimplementedSrvUserServiceServer
+// SrvUserServer is the server API for SrvUser service.
+// All implementations must embed UnimplementedSrvUserServer
 // for forward compatibility
-type SrvUserServiceServer interface {
+type SrvUserServer interface {
 	// Login 用户登录
 	Login(context.Context, *resources.LoginRequest) (*resources.LoginResponse, error)
 	// Register 用户注册
 	Register(context.Context, *resources.RegisterRequest) (*resources.RegisterResponse, error)
 	// Info 用户信息
-	Info(context.Context, *resources.InfoRequest) (*resources.InfoResponse, error)
+	Info(context.Context, *resources.InfoRequest) (*resources.Info, error)
 	// ChangePassword 用户修改密码
 	ChangePassword(context.Context, *resources.ChangePasswordRequest) (*resources.ChangePasswordResponse, error)
 	// ChangeAvatar 用户修改头像
@@ -165,284 +154,257 @@ type SrvUserServiceServer interface {
 	ChangeNickname(context.Context, *resources.ChangeNicknameRequest) (*resources.ChangeNicknameResponse, error)
 	// ChangeSex 用户修改性别
 	ChangeSex(context.Context, *resources.ChangeSexRequest) (*resources.ChangeSexResponse, error)
-	// ChangeStatus 用户修改状态
-	ChangeStatus(context.Context, *resources.ChangeStatusRequest) (*resources.ChangeStatusResponse, error)
-	mustEmbedUnimplementedSrvUserServiceServer()
+	mustEmbedUnimplementedSrvUserServer()
 }
 
-// UnimplementedSrvUserServiceServer must be embedded to have forward compatible implementations.
-type UnimplementedSrvUserServiceServer struct {
+// UnimplementedSrvUserServer must be embedded to have forward compatible implementations.
+type UnimplementedSrvUserServer struct {
 }
 
-func (UnimplementedSrvUserServiceServer) Login(context.Context, *resources.LoginRequest) (*resources.LoginResponse, error) {
+func (UnimplementedSrvUserServer) Login(context.Context, *resources.LoginRequest) (*resources.LoginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
-func (UnimplementedSrvUserServiceServer) Register(context.Context, *resources.RegisterRequest) (*resources.RegisterResponse, error) {
+func (UnimplementedSrvUserServer) Register(context.Context, *resources.RegisterRequest) (*resources.RegisterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Register not implemented")
 }
-func (UnimplementedSrvUserServiceServer) Info(context.Context, *resources.InfoRequest) (*resources.InfoResponse, error) {
+func (UnimplementedSrvUserServer) Info(context.Context, *resources.InfoRequest) (*resources.Info, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Info not implemented")
 }
-func (UnimplementedSrvUserServiceServer) ChangePassword(context.Context, *resources.ChangePasswordRequest) (*resources.ChangePasswordResponse, error) {
+func (UnimplementedSrvUserServer) ChangePassword(context.Context, *resources.ChangePasswordRequest) (*resources.ChangePasswordResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChangePassword not implemented")
 }
-func (UnimplementedSrvUserServiceServer) ChangeAvatar(context.Context, *resources.ChangeAvatarRequest) (*resources.ChangeAvatarResponse, error) {
+func (UnimplementedSrvUserServer) ChangeAvatar(context.Context, *resources.ChangeAvatarRequest) (*resources.ChangeAvatarResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChangeAvatar not implemented")
 }
-func (UnimplementedSrvUserServiceServer) ChangeMobile(context.Context, *resources.ChangeMobileRequest) (*resources.ChangeMobileResponse, error) {
+func (UnimplementedSrvUserServer) ChangeMobile(context.Context, *resources.ChangeMobileRequest) (*resources.ChangeMobileResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChangeMobile not implemented")
 }
-func (UnimplementedSrvUserServiceServer) ChangeEmail(context.Context, *resources.ChangeEmailRequest) (*resources.ChangeEmailResponse, error) {
+func (UnimplementedSrvUserServer) ChangeEmail(context.Context, *resources.ChangeEmailRequest) (*resources.ChangeEmailResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChangeEmail not implemented")
 }
-func (UnimplementedSrvUserServiceServer) ChangeNickname(context.Context, *resources.ChangeNicknameRequest) (*resources.ChangeNicknameResponse, error) {
+func (UnimplementedSrvUserServer) ChangeNickname(context.Context, *resources.ChangeNicknameRequest) (*resources.ChangeNicknameResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChangeNickname not implemented")
 }
-func (UnimplementedSrvUserServiceServer) ChangeSex(context.Context, *resources.ChangeSexRequest) (*resources.ChangeSexResponse, error) {
+func (UnimplementedSrvUserServer) ChangeSex(context.Context, *resources.ChangeSexRequest) (*resources.ChangeSexResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChangeSex not implemented")
 }
-func (UnimplementedSrvUserServiceServer) ChangeStatus(context.Context, *resources.ChangeStatusRequest) (*resources.ChangeStatusResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChangeStatus not implemented")
-}
-func (UnimplementedSrvUserServiceServer) mustEmbedUnimplementedSrvUserServiceServer() {}
+func (UnimplementedSrvUserServer) mustEmbedUnimplementedSrvUserServer() {}
 
-// UnsafeSrvUserServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to SrvUserServiceServer will
+// UnsafeSrvUserServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to SrvUserServer will
 // result in compilation errors.
-type UnsafeSrvUserServiceServer interface {
-	mustEmbedUnimplementedSrvUserServiceServer()
+type UnsafeSrvUserServer interface {
+	mustEmbedUnimplementedSrvUserServer()
 }
 
-func RegisterSrvUserServiceServer(s grpc.ServiceRegistrar, srv SrvUserServiceServer) {
-	s.RegisterService(&SrvUserService_ServiceDesc, srv)
+func RegisterSrvUserServer(s grpc.ServiceRegistrar, srv SrvUserServer) {
+	s.RegisterService(&SrvUser_ServiceDesc, srv)
 }
 
-func _SrvUserService_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SrvUser_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(resources.LoginRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SrvUserServiceServer).Login(ctx, in)
+		return srv.(SrvUserServer).Login(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.config.userservicev1.SrvUserService/Login",
+		FullMethod: "/user.api.config.userservicev1.SrvUser/Login",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SrvUserServiceServer).Login(ctx, req.(*resources.LoginRequest))
+		return srv.(SrvUserServer).Login(ctx, req.(*resources.LoginRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SrvUserService_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SrvUser_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(resources.RegisterRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SrvUserServiceServer).Register(ctx, in)
+		return srv.(SrvUserServer).Register(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.config.userservicev1.SrvUserService/Register",
+		FullMethod: "/user.api.config.userservicev1.SrvUser/Register",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SrvUserServiceServer).Register(ctx, req.(*resources.RegisterRequest))
+		return srv.(SrvUserServer).Register(ctx, req.(*resources.RegisterRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SrvUserService_Info_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SrvUser_Info_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(resources.InfoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SrvUserServiceServer).Info(ctx, in)
+		return srv.(SrvUserServer).Info(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.config.userservicev1.SrvUserService/Info",
+		FullMethod: "/user.api.config.userservicev1.SrvUser/Info",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SrvUserServiceServer).Info(ctx, req.(*resources.InfoRequest))
+		return srv.(SrvUserServer).Info(ctx, req.(*resources.InfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SrvUserService_ChangePassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SrvUser_ChangePassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(resources.ChangePasswordRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SrvUserServiceServer).ChangePassword(ctx, in)
+		return srv.(SrvUserServer).ChangePassword(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.config.userservicev1.SrvUserService/ChangePassword",
+		FullMethod: "/user.api.config.userservicev1.SrvUser/ChangePassword",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SrvUserServiceServer).ChangePassword(ctx, req.(*resources.ChangePasswordRequest))
+		return srv.(SrvUserServer).ChangePassword(ctx, req.(*resources.ChangePasswordRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SrvUserService_ChangeAvatar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SrvUser_ChangeAvatar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(resources.ChangeAvatarRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SrvUserServiceServer).ChangeAvatar(ctx, in)
+		return srv.(SrvUserServer).ChangeAvatar(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.config.userservicev1.SrvUserService/ChangeAvatar",
+		FullMethod: "/user.api.config.userservicev1.SrvUser/ChangeAvatar",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SrvUserServiceServer).ChangeAvatar(ctx, req.(*resources.ChangeAvatarRequest))
+		return srv.(SrvUserServer).ChangeAvatar(ctx, req.(*resources.ChangeAvatarRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SrvUserService_ChangeMobile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SrvUser_ChangeMobile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(resources.ChangeMobileRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SrvUserServiceServer).ChangeMobile(ctx, in)
+		return srv.(SrvUserServer).ChangeMobile(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.config.userservicev1.SrvUserService/ChangeMobile",
+		FullMethod: "/user.api.config.userservicev1.SrvUser/ChangeMobile",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SrvUserServiceServer).ChangeMobile(ctx, req.(*resources.ChangeMobileRequest))
+		return srv.(SrvUserServer).ChangeMobile(ctx, req.(*resources.ChangeMobileRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SrvUserService_ChangeEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SrvUser_ChangeEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(resources.ChangeEmailRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SrvUserServiceServer).ChangeEmail(ctx, in)
+		return srv.(SrvUserServer).ChangeEmail(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.config.userservicev1.SrvUserService/ChangeEmail",
+		FullMethod: "/user.api.config.userservicev1.SrvUser/ChangeEmail",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SrvUserServiceServer).ChangeEmail(ctx, req.(*resources.ChangeEmailRequest))
+		return srv.(SrvUserServer).ChangeEmail(ctx, req.(*resources.ChangeEmailRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SrvUserService_ChangeNickname_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SrvUser_ChangeNickname_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(resources.ChangeNicknameRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SrvUserServiceServer).ChangeNickname(ctx, in)
+		return srv.(SrvUserServer).ChangeNickname(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.config.userservicev1.SrvUserService/ChangeNickname",
+		FullMethod: "/user.api.config.userservicev1.SrvUser/ChangeNickname",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SrvUserServiceServer).ChangeNickname(ctx, req.(*resources.ChangeNicknameRequest))
+		return srv.(SrvUserServer).ChangeNickname(ctx, req.(*resources.ChangeNicknameRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SrvUserService_ChangeSex_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SrvUser_ChangeSex_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(resources.ChangeSexRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SrvUserServiceServer).ChangeSex(ctx, in)
+		return srv.(SrvUserServer).ChangeSex(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.config.userservicev1.SrvUserService/ChangeSex",
+		FullMethod: "/user.api.config.userservicev1.SrvUser/ChangeSex",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SrvUserServiceServer).ChangeSex(ctx, req.(*resources.ChangeSexRequest))
+		return srv.(SrvUserServer).ChangeSex(ctx, req.(*resources.ChangeSexRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SrvUserService_ChangeStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(resources.ChangeStatusRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SrvUserServiceServer).ChangeStatus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/user.api.config.userservicev1.SrvUserService/ChangeStatus",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SrvUserServiceServer).ChangeStatus(ctx, req.(*resources.ChangeStatusRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-// SrvUserService_ServiceDesc is the grpc.ServiceDesc for SrvUserService service.
+// SrvUser_ServiceDesc is the grpc.ServiceDesc for SrvUser service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var SrvUserService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "user.api.config.userservicev1.SrvUserService",
-	HandlerType: (*SrvUserServiceServer)(nil),
+var SrvUser_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "user.api.config.userservicev1.SrvUser",
+	HandlerType: (*SrvUserServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Login",
-			Handler:    _SrvUserService_Login_Handler,
+			Handler:    _SrvUser_Login_Handler,
 		},
 		{
 			MethodName: "Register",
-			Handler:    _SrvUserService_Register_Handler,
+			Handler:    _SrvUser_Register_Handler,
 		},
 		{
 			MethodName: "Info",
-			Handler:    _SrvUserService_Info_Handler,
+			Handler:    _SrvUser_Info_Handler,
 		},
 		{
 			MethodName: "ChangePassword",
-			Handler:    _SrvUserService_ChangePassword_Handler,
+			Handler:    _SrvUser_ChangePassword_Handler,
 		},
 		{
 			MethodName: "ChangeAvatar",
-			Handler:    _SrvUserService_ChangeAvatar_Handler,
+			Handler:    _SrvUser_ChangeAvatar_Handler,
 		},
 		{
 			MethodName: "ChangeMobile",
-			Handler:    _SrvUserService_ChangeMobile_Handler,
+			Handler:    _SrvUser_ChangeMobile_Handler,
 		},
 		{
 			MethodName: "ChangeEmail",
-			Handler:    _SrvUserService_ChangeEmail_Handler,
+			Handler:    _SrvUser_ChangeEmail_Handler,
 		},
 		{
 			MethodName: "ChangeNickname",
-			Handler:    _SrvUserService_ChangeNickname_Handler,
+			Handler:    _SrvUser_ChangeNickname_Handler,
 		},
 		{
 			MethodName: "ChangeSex",
-			Handler:    _SrvUserService_ChangeSex_Handler,
-		},
-		{
-			MethodName: "ChangeStatus",
-			Handler:    _SrvUserService_ChangeStatus_Handler,
+			Handler:    _SrvUser_ChangeSex_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

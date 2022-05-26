@@ -8,5 +8,7 @@
 
 # 执行生成脚本 与 编译proto
 go run ./cmd/proto/... -path=./api/user
+
+# 也可单独执行脚本`./proto_script.sh`
     
 ```

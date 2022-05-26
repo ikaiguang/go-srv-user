@@ -10,3 +10,18 @@ info:
 	@echo "==> GOPATH: $(GOPATH)"
 	@echo "==> GIT_BRANCH: $(GIT_BRANCH)"
 	@echo "==> GIT_VERSION: $(GIT_VERSION)"
+
+.PHONY: proto_user
+proto_user:
+	go run ./cmd/proto/... -path=./api/user
+
+.PHONY: run
+run:
+	go run ./cmd/main/... -conf=./configs
+
+.PHONY: ping
+ping:
+	curl http://127.0.0.1:8081/api/v1/ping/hello && \
+    echo "\n" && \
+    curl http://127.0.0.1:8081/api/v1/ping/error && \
+    echo "\n"

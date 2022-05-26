@@ -7,3 +7,19 @@ option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/enums;usercomm
 option java_multiple_files = true;
 option java_package = "user.api.user.usercommonv1";
 option objc_class_prefix = "UserAPI";
+
+// AuthTypeEnum 认证类型
+message AuthTypeEnum {
+  enum AuthType {
+    // USER_PASSWORD 用户名密码
+    USER_PASSWORD = 0;
+    // SMS_CODE 短信验证码
+    SMS_CODE = 1;
+    // WECHAT_LOGIN 微信登录
+    WECHAT_LOGIN = 2;
+    // ALIPAY_LOGIN 支付宝登录
+    ALIPAY_LOGIN = 3;
+    // TAOBAO_LOGIN 淘宝登录
+    TAOBAO_LOGIN = 4;
+  }
+}
