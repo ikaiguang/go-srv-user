@@ -16,8 +16,8 @@ import (
 )
 
 var (
-	_ Config  = &configuration{}
-	_ Modules = &modules{}
+	_ Config = &configuration{}
+	_ Engine = &engines{}
 
 	// ErrUnimplemented 未实现
 	ErrUnimplemented = strerrors.New("unimplemented")
@@ -86,8 +86,8 @@ type Config interface {
 	GRPCConfig() *confv1.Server_GRPC
 }
 
-// Modules 模块、组件、单元
-type Modules interface {
+// Engine 引擎模块、组件、单元
+type Engine interface {
 	// Config 配置
 	Config
 
@@ -105,11 +105,12 @@ type Modules interface {
 	// 用于包含 http.Middleware(logging.Server)
 	LoggerMiddleware() (log.Logger, []func() error, error)
 
-	// MysqlGormDB mysql gorm 数据库
-	MysqlGormDB() (*gorm.DB, error)
-
-	// RedisClient redis 客户端
-	RedisClient() (*redis.Client, error)
+	// GetMySQLGormDB mysql gorm 数据库
+	GetMySQLGormDB() (*gorm.DB, error)
+	// GetPostgresGormDB postgres gorm 数据库
+	GetPostgresGormDB() (*gorm.DB, error)
+	// GetRedisClient redis 客户端
+	GetRedisClient() (*redis.Client, error)
 
 	// Close 关闭
 	Close() error

@@ -49,7 +49,7 @@ func _SrvUser_Login0_HTTP_Handler(srv SrvUserHTTPServer) func(ctx http.Context) 
 		if err := ctx.Bind(&in); err != nil {
 			return err
 		}
-		http.SetOperation(ctx, "/user.api.config.userservicev1.SrvUser/Login")
+		http.SetOperation(ctx, "/user.api.user.userservicev1.SrvUser/Login")
 		h := ctx.Middleware(func(ctx context.Context, req interface{}) (interface{}, error) {
 			return srv.Login(ctx, req.(*resources.LoginRequest))
 		})
@@ -68,7 +68,7 @@ func _SrvUser_Register0_HTTP_Handler(srv SrvUserHTTPServer) func(ctx http.Contex
 		if err := ctx.Bind(&in); err != nil {
 			return err
 		}
-		http.SetOperation(ctx, "/user.api.config.userservicev1.SrvUser/Register")
+		http.SetOperation(ctx, "/user.api.user.userservicev1.SrvUser/Register")
 		h := ctx.Middleware(func(ctx context.Context, req interface{}) (interface{}, error) {
 			return srv.Register(ctx, req.(*resources.RegisterRequest))
 		})
@@ -87,7 +87,7 @@ func _SrvUser_Info0_HTTP_Handler(srv SrvUserHTTPServer) func(ctx http.Context) e
 		if err := ctx.BindQuery(&in); err != nil {
 			return err
 		}
-		http.SetOperation(ctx, "/user.api.config.userservicev1.SrvUser/Info")
+		http.SetOperation(ctx, "/user.api.user.userservicev1.SrvUser/Info")
 		h := ctx.Middleware(func(ctx context.Context, req interface{}) (interface{}, error) {
 			return srv.Info(ctx, req.(*resources.InfoRequest))
 		})
@@ -106,7 +106,7 @@ func _SrvUser_ChangePassword0_HTTP_Handler(srv SrvUserHTTPServer) func(ctx http.
 		if err := ctx.Bind(&in); err != nil {
 			return err
 		}
-		http.SetOperation(ctx, "/user.api.config.userservicev1.SrvUser/ChangePassword")
+		http.SetOperation(ctx, "/user.api.user.userservicev1.SrvUser/ChangePassword")
 		h := ctx.Middleware(func(ctx context.Context, req interface{}) (interface{}, error) {
 			return srv.ChangePassword(ctx, req.(*resources.ChangePasswordRequest))
 		})
@@ -125,7 +125,7 @@ func _SrvUser_ChangeAvatar0_HTTP_Handler(srv SrvUserHTTPServer) func(ctx http.Co
 		if err := ctx.Bind(&in); err != nil {
 			return err
 		}
-		http.SetOperation(ctx, "/user.api.config.userservicev1.SrvUser/ChangeAvatar")
+		http.SetOperation(ctx, "/user.api.user.userservicev1.SrvUser/ChangeAvatar")
 		h := ctx.Middleware(func(ctx context.Context, req interface{}) (interface{}, error) {
 			return srv.ChangeAvatar(ctx, req.(*resources.ChangeAvatarRequest))
 		})
@@ -144,7 +144,7 @@ func _SrvUser_ChangeMobile0_HTTP_Handler(srv SrvUserHTTPServer) func(ctx http.Co
 		if err := ctx.Bind(&in); err != nil {
 			return err
 		}
-		http.SetOperation(ctx, "/user.api.config.userservicev1.SrvUser/ChangeMobile")
+		http.SetOperation(ctx, "/user.api.user.userservicev1.SrvUser/ChangeMobile")
 		h := ctx.Middleware(func(ctx context.Context, req interface{}) (interface{}, error) {
 			return srv.ChangeMobile(ctx, req.(*resources.ChangeMobileRequest))
 		})
@@ -163,7 +163,7 @@ func _SrvUser_ChangeEmail0_HTTP_Handler(srv SrvUserHTTPServer) func(ctx http.Con
 		if err := ctx.Bind(&in); err != nil {
 			return err
 		}
-		http.SetOperation(ctx, "/user.api.config.userservicev1.SrvUser/ChangeEmail")
+		http.SetOperation(ctx, "/user.api.user.userservicev1.SrvUser/ChangeEmail")
 		h := ctx.Middleware(func(ctx context.Context, req interface{}) (interface{}, error) {
 			return srv.ChangeEmail(ctx, req.(*resources.ChangeEmailRequest))
 		})
@@ -182,7 +182,7 @@ func _SrvUser_ChangeNickname0_HTTP_Handler(srv SrvUserHTTPServer) func(ctx http.
 		if err := ctx.Bind(&in); err != nil {
 			return err
 		}
-		http.SetOperation(ctx, "/user.api.config.userservicev1.SrvUser/ChangeNickname")
+		http.SetOperation(ctx, "/user.api.user.userservicev1.SrvUser/ChangeNickname")
 		h := ctx.Middleware(func(ctx context.Context, req interface{}) (interface{}, error) {
 			return srv.ChangeNickname(ctx, req.(*resources.ChangeNicknameRequest))
 		})
@@ -201,7 +201,7 @@ func _SrvUser_ChangeSex0_HTTP_Handler(srv SrvUserHTTPServer) func(ctx http.Conte
 		if err := ctx.Bind(&in); err != nil {
 			return err
 		}
-		http.SetOperation(ctx, "/user.api.config.userservicev1.SrvUser/ChangeSex")
+		http.SetOperation(ctx, "/user.api.user.userservicev1.SrvUser/ChangeSex")
 		h := ctx.Middleware(func(ctx context.Context, req interface{}) (interface{}, error) {
 			return srv.ChangeSex(ctx, req.(*resources.ChangeSexRequest))
 		})
@@ -238,7 +238,7 @@ func (c *SrvUserHTTPClientImpl) ChangeAvatar(ctx context.Context, in *resources.
 	var out resources.ChangeAvatarResponse
 	pattern := "/api/v1/user/change-avatar"
 	path := binding.EncodeURL(pattern, in, false)
-	opts = append(opts, http.Operation("/user.api.config.userservicev1.SrvUser/ChangeAvatar"))
+	opts = append(opts, http.Operation("/user.api.user.userservicev1.SrvUser/ChangeAvatar"))
 	opts = append(opts, http.PathTemplate(pattern))
 	err := c.cc.Invoke(ctx, "PUT", path, in, &out, opts...)
 	if err != nil {
@@ -251,7 +251,7 @@ func (c *SrvUserHTTPClientImpl) ChangeEmail(ctx context.Context, in *resources.C
 	var out resources.ChangeEmailResponse
 	pattern := "/api/v1/user/change-email"
 	path := binding.EncodeURL(pattern, in, false)
-	opts = append(opts, http.Operation("/user.api.config.userservicev1.SrvUser/ChangeEmail"))
+	opts = append(opts, http.Operation("/user.api.user.userservicev1.SrvUser/ChangeEmail"))
 	opts = append(opts, http.PathTemplate(pattern))
 	err := c.cc.Invoke(ctx, "PUT", path, in, &out, opts...)
 	if err != nil {
@@ -264,7 +264,7 @@ func (c *SrvUserHTTPClientImpl) ChangeMobile(ctx context.Context, in *resources.
 	var out resources.ChangeMobileResponse
 	pattern := "/api/v1/user/change-mobile"
 	path := binding.EncodeURL(pattern, in, false)
-	opts = append(opts, http.Operation("/user.api.config.userservicev1.SrvUser/ChangeMobile"))
+	opts = append(opts, http.Operation("/user.api.user.userservicev1.SrvUser/ChangeMobile"))
 	opts = append(opts, http.PathTemplate(pattern))
 	err := c.cc.Invoke(ctx, "PUT", path, in, &out, opts...)
 	if err != nil {
@@ -277,7 +277,7 @@ func (c *SrvUserHTTPClientImpl) ChangeNickname(ctx context.Context, in *resource
 	var out resources.ChangeNicknameResponse
 	pattern := "/api/v1/user/change-nickname"
 	path := binding.EncodeURL(pattern, in, false)
-	opts = append(opts, http.Operation("/user.api.config.userservicev1.SrvUser/ChangeNickname"))
+	opts = append(opts, http.Operation("/user.api.user.userservicev1.SrvUser/ChangeNickname"))
 	opts = append(opts, http.PathTemplate(pattern))
 	err := c.cc.Invoke(ctx, "PUT", path, in, &out, opts...)
 	if err != nil {
@@ -290,7 +290,7 @@ func (c *SrvUserHTTPClientImpl) ChangePassword(ctx context.Context, in *resource
 	var out resources.ChangePasswordResponse
 	pattern := "/api/v1/user/change-password"
 	path := binding.EncodeURL(pattern, in, false)
-	opts = append(opts, http.Operation("/user.api.config.userservicev1.SrvUser/ChangePassword"))
+	opts = append(opts, http.Operation("/user.api.user.userservicev1.SrvUser/ChangePassword"))
 	opts = append(opts, http.PathTemplate(pattern))
 	err := c.cc.Invoke(ctx, "PUT", path, in, &out, opts...)
 	if err != nil {
@@ -303,7 +303,7 @@ func (c *SrvUserHTTPClientImpl) ChangeSex(ctx context.Context, in *resources.Cha
 	var out resources.ChangeSexResponse
 	pattern := "/api/v1/user/change-sex"
 	path := binding.EncodeURL(pattern, in, false)
-	opts = append(opts, http.Operation("/user.api.config.userservicev1.SrvUser/ChangeSex"))
+	opts = append(opts, http.Operation("/user.api.user.userservicev1.SrvUser/ChangeSex"))
 	opts = append(opts, http.PathTemplate(pattern))
 	err := c.cc.Invoke(ctx, "PUT", path, in, &out, opts...)
 	if err != nil {
@@ -316,7 +316,7 @@ func (c *SrvUserHTTPClientImpl) Info(ctx context.Context, in *resources.InfoRequ
 	var out resources.Info
 	pattern := "/api/v1/user/info"
 	path := binding.EncodeURL(pattern, in, true)
-	opts = append(opts, http.Operation("/user.api.config.userservicev1.SrvUser/Info"))
+	opts = append(opts, http.Operation("/user.api.user.userservicev1.SrvUser/Info"))
 	opts = append(opts, http.PathTemplate(pattern))
 	err := c.cc.Invoke(ctx, "GET", path, nil, &out, opts...)
 	if err != nil {
@@ -329,7 +329,7 @@ func (c *SrvUserHTTPClientImpl) Login(ctx context.Context, in *resources.LoginRe
 	var out resources.LoginResponse
 	pattern := "/api/v1/user/login"
 	path := binding.EncodeURL(pattern, in, false)
-	opts = append(opts, http.Operation("/user.api.config.userservicev1.SrvUser/Login"))
+	opts = append(opts, http.Operation("/user.api.user.userservicev1.SrvUser/Login"))
 	opts = append(opts, http.PathTemplate(pattern))
 	err := c.cc.Invoke(ctx, "POST", path, in, &out, opts...)
 	if err != nil {
@@ -342,7 +342,7 @@ func (c *SrvUserHTTPClientImpl) Register(ctx context.Context, in *resources.Regi
 	var out resources.RegisterResponse
 	pattern := "/api/v1/user/register"
 	path := binding.EncodeURL(pattern, in, false)
-	opts = append(opts, http.Operation("/user.api.config.userservicev1.SrvUser/Register"))
+	opts = append(opts, http.Operation("/user.api.user.userservicev1.SrvUser/Register"))
 	opts = append(opts, http.PathTemplate(pattern))
 	err := c.cc.Invoke(ctx, "POST", path, in, &out, opts...)
 	if err != nil {

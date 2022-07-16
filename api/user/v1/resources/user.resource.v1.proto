@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package user.api.config.userv1;
+package user.api.user.userv1;
 
 // 多语言特定包名，用于源代码引用
 option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/resources;userv1";
 option java_multiple_files = true;
 option java_package = "user.api.user.userv1";
-option objc_class_prefix = "UserAPI";
+option java_outer_classname = "UserApiUserUserV1";
 
 import "github.com/ikaiguang/go-srv-user/api/user/v1/enums/user.enum.v1.proto";
 

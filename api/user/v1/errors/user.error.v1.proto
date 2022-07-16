@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package user.api.config.usererrorv1;
+package user.api.user.usererrorv1;
 
 // 多语言特定包名，用于源代码引用
 option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/errors;usererrorv1";
 option java_multiple_files = true;
 option java_package = "user.api.user.usererrorv1";
-option objc_class_prefix = "UserAPI";
+option java_outer_classname = "UserApiUserUserErrorV1";
 
 // ERROR 用户错误
 enum ERROR {

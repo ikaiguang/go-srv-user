@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package user.api.config.usercommonv1;
+package user.api.user.usercommonv1;
 
 // 多语言特定包名，用于源代码引用
-option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/enums;usercommonv1";
+option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/common;usercommonv1";
 option java_multiple_files = true;
 option java_package = "user.api.user.usercommonv1";
-option objc_class_prefix = "UserAPI";
+option java_outer_classname = "UserApiUserUserCommonV1";
 
 // AuthTypeEnum 认证类型
 message AuthTypeEnum {

@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package user.api.config.userservicev1;
+package user.api.user.userservicev1;
 
 // 多语言特定包名，用于源代码引用
 option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/services;userservicev1";
 option java_multiple_files = true;
 option java_package = "user.api.user.userservicev1";
-option objc_class_prefix = "UserAPI";
+option java_outer_classname = "UserApiUserUserServiceV1";
 
 import "google/api/annotations.proto";
 import "github.com/ikaiguang/go-srv-user/api/user/v1/resources/user.resource.v1.proto";

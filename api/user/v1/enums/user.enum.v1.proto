@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package user.api.config.userenumv1;
+package user.api.user.userenumv1;
 
 // 多语言特定包名，用于源代码引用
 option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/enums;userenumv1";
 option java_multiple_files = true;
 option java_package = "user.api.user.userenumv1";
-option objc_class_prefix = "UserAPI";
+option java_outer_classname = "UserApiUserUserEnumV1";
 
 // UserStatusEnum 用户状态
 message UserStatusEnum {

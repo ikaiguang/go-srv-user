@@ -53,7 +53,7 @@ func NewSrvUserClient(cc grpc.ClientConnInterface) SrvUserClient {
 
 func (c *srvUserClient) Login(ctx context.Context, in *resources.LoginRequest, opts ...grpc.CallOption) (*resources.LoginResponse, error) {
 	out := new(resources.LoginResponse)
-	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUser/Login", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/Login", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +62,7 @@ func (c *srvUserClient) Login(ctx context.Context, in *resources.LoginRequest, o
 
 func (c *srvUserClient) Register(ctx context.Context, in *resources.RegisterRequest, opts ...grpc.CallOption) (*resources.RegisterResponse, error) {
 	out := new(resources.RegisterResponse)
-	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUser/Register", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/Register", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +71,7 @@ func (c *srvUserClient) Register(ctx context.Context, in *resources.RegisterRequ
 
 func (c *srvUserClient) Info(ctx context.Context, in *resources.InfoRequest, opts ...grpc.CallOption) (*resources.Info, error) {
 	out := new(resources.Info)
-	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUser/Info", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/Info", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +80,7 @@ func (c *srvUserClient) Info(ctx context.Context, in *resources.InfoRequest, opt
 
 func (c *srvUserClient) ChangePassword(ctx context.Context, in *resources.ChangePasswordRequest, opts ...grpc.CallOption) (*resources.ChangePasswordResponse, error) {
 	out := new(resources.ChangePasswordResponse)
-	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUser/ChangePassword", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/ChangePassword", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -89,7 +89,7 @@ func (c *srvUserClient) ChangePassword(ctx context.Context, in *resources.Change
 
 func (c *srvUserClient) ChangeAvatar(ctx context.Context, in *resources.ChangeAvatarRequest, opts ...grpc.CallOption) (*resources.ChangeAvatarResponse, error) {
 	out := new(resources.ChangeAvatarResponse)
-	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUser/ChangeAvatar", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/ChangeAvatar", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -98,7 +98,7 @@ func (c *srvUserClient) ChangeAvatar(ctx context.Context, in *resources.ChangeAv
 
 func (c *srvUserClient) ChangeMobile(ctx context.Context, in *resources.ChangeMobileRequest, opts ...grpc.CallOption) (*resources.ChangeMobileResponse, error) {
 	out := new(resources.ChangeMobileResponse)
-	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUser/ChangeMobile", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/ChangeMobile", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -107,7 +107,7 @@ func (c *srvUserClient) ChangeMobile(ctx context.Context, in *resources.ChangeMo
 
 func (c *srvUserClient) ChangeEmail(ctx context.Context, in *resources.ChangeEmailRequest, opts ...grpc.CallOption) (*resources.ChangeEmailResponse, error) {
 	out := new(resources.ChangeEmailResponse)
-	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUser/ChangeEmail", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/ChangeEmail", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -116,7 +116,7 @@ func (c *srvUserClient) ChangeEmail(ctx context.Context, in *resources.ChangeEma
 
 func (c *srvUserClient) ChangeNickname(ctx context.Context, in *resources.ChangeNicknameRequest, opts ...grpc.CallOption) (*resources.ChangeNicknameResponse, error) {
 	out := new(resources.ChangeNicknameResponse)
-	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUser/ChangeNickname", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/ChangeNickname", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -125,7 +125,7 @@ func (c *srvUserClient) ChangeNickname(ctx context.Context, in *resources.Change
 
 func (c *srvUserClient) ChangeSex(ctx context.Context, in *resources.ChangeSexRequest, opts ...grpc.CallOption) (*resources.ChangeSexResponse, error) {
 	out := new(resources.ChangeSexResponse)
-	err := c.cc.Invoke(ctx, "/user.api.config.userservicev1.SrvUser/ChangeSex", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/ChangeSex", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -211,7 +211,7 @@ func _SrvUser_Login_Handler(srv interface{}, ctx context.Context, dec func(inter
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.config.userservicev1.SrvUser/Login",
+		FullMethod: "/user.api.user.userservicev1.SrvUser/Login",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SrvUserServer).Login(ctx, req.(*resources.LoginRequest))
@@ -229,7 +229,7 @@ func _SrvUser_Register_Handler(srv interface{}, ctx context.Context, dec func(in
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.config.userservicev1.SrvUser/Register",
+		FullMethod: "/user.api.user.userservicev1.SrvUser/Register",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SrvUserServer).Register(ctx, req.(*resources.RegisterRequest))
@@ -247,7 +247,7 @@ func _SrvUser_Info_Handler(srv interface{}, ctx context.Context, dec func(interf
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.config.userservicev1.SrvUser/Info",
+		FullMethod: "/user.api.user.userservicev1.SrvUser/Info",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SrvUserServer).Info(ctx, req.(*resources.InfoRequest))
@@ -265,7 +265,7 @@ func _SrvUser_ChangePassword_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.config.userservicev1.SrvUser/ChangePassword",
+		FullMethod: "/user.api.user.userservicev1.SrvUser/ChangePassword",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SrvUserServer).ChangePassword(ctx, req.(*resources.ChangePasswordRequest))
@@ -283,7 +283,7 @@ func _SrvUser_ChangeAvatar_Handler(srv interface{}, ctx context.Context, dec fun
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.config.userservicev1.SrvUser/ChangeAvatar",
+		FullMethod: "/user.api.user.userservicev1.SrvUser/ChangeAvatar",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SrvUserServer).ChangeAvatar(ctx, req.(*resources.ChangeAvatarRequest))
@@ -301,7 +301,7 @@ func _SrvUser_ChangeMobile_Handler(srv interface{}, ctx context.Context, dec fun
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.config.userservicev1.SrvUser/ChangeMobile",
+		FullMethod: "/user.api.user.userservicev1.SrvUser/ChangeMobile",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SrvUserServer).ChangeMobile(ctx, req.(*resources.ChangeMobileRequest))
@@ -319,7 +319,7 @@ func _SrvUser_ChangeEmail_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.config.userservicev1.SrvUser/ChangeEmail",
+		FullMethod: "/user.api.user.userservicev1.SrvUser/ChangeEmail",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SrvUserServer).ChangeEmail(ctx, req.(*resources.ChangeEmailRequest))
@@ -337,7 +337,7 @@ func _SrvUser_ChangeNickname_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.config.userservicev1.SrvUser/ChangeNickname",
+		FullMethod: "/user.api.user.userservicev1.SrvUser/ChangeNickname",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SrvUserServer).ChangeNickname(ctx, req.(*resources.ChangeNicknameRequest))
@@ -355,7 +355,7 @@ func _SrvUser_ChangeSex_Handler(srv interface{}, ctx context.Context, dec func(i
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.config.userservicev1.SrvUser/ChangeSex",
+		FullMethod: "/user.api.user.userservicev1.SrvUser/ChangeSex",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SrvUserServer).ChangeSex(ctx, req.(*resources.ChangeSexRequest))
@@ -367,7 +367,7 @@ func _SrvUser_ChangeSex_Handler(srv interface{}, ctx context.Context, dec func(i
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var SrvUser_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "user.api.config.userservicev1.SrvUser",
+	ServiceName: "user.api.user.userservicev1.SrvUser",
 	HandlerType: (*SrvUserServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

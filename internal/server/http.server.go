@@ -6,27 +6,27 @@ import (
 	"github.com/go-kratos/kratos/v2/middleware"
 	"github.com/go-kratos/kratos/v2/middleware/recovery"
 	"github.com/go-kratos/kratos/v2/transport/http"
+	headermiddle "github.com/ikaiguang/go-srv-kit/kratos/middleware/header"
+	logmiddle "github.com/ikaiguang/go-srv-kit/kratos/middleware/log"
 
 	apputil "github.com/ikaiguang/go-srv-kit/kratos/app"
-	middlewareutil "github.com/ikaiguang/go-srv-kit/kratos/middleware"
+
 	"github.com/ikaiguang/go-srv-user/internal/setup"
 )
 
-// NewHTTPServer new a HTTP server.
-func NewHTTPServer(modulesHandler setup.Modules) (srv *http.Server, err error) {
-	httpConfig := modulesHandler.HTTPConfig()
+// NewHTTPServer new HTTP server.
+func NewHTTPServer(engineHandler setup.Engine) (srv *http.Server, err error) {
+	httpConfig := engineHandler.HTTPConfig()
 	stdlog.Printf("|*** 加载HTTP服务：%s\n", httpConfig.Addr)
 
 	// 日志
-	logger, _, err := modulesHandler.Logger()
-	if err != nil {
-		return srv, err
-	}
+	//logger, _, err := engineHandler.Logger()
+	//if err != nil {
+	//	return srv, err
+	//}
 
 	// options
-	var opts = []http.ServerOption{
-		http.Logger(logger),
-	}
+	var opts []http.ServerOption
 	if httpConfig.Network != "" {
 		opts = append(opts, http.Network(httpConfig.Network))
 	}
@@ -43,17 +43,17 @@ func NewHTTPServer(modulesHandler setup.Modules) (srv *http.Server, err error) {
 
 	// ===== 中间件 =====
 	var middlewareSlice = []middleware.Middleware{
-		recovery.Recovery(recovery.WithLogger(logger)),
+		recovery.Recovery(),
 	}
 	// 中间件日志
-	loggerMiddle, _, err := modulesHandler.LoggerMiddleware()
+	loggerMiddle, _, err := engineHandler.LoggerMiddleware()
 	if err != nil {
 		return srv, err
 	}
 	// 请求头
-	middlewareSlice = append(middlewareSlice, middlewareutil.RequestHeader())
+	middlewareSlice = append(middlewareSlice, headermiddle.RequestHeader())
 	// 日志输出
-	middlewareSlice = append(middlewareSlice, middlewareutil.ServerLog(loggerMiddle))
+	middlewareSlice = append(middlewareSlice, logmiddle.ServerLog(loggerMiddle))
 
 	// 中间件选项
 	opts = append(opts, http.Middleware(middlewareSlice...))
@@ -66,7 +66,7 @@ func NewHTTPServer(modulesHandler setup.Modules) (srv *http.Server, err error) {
 }
 
 // RegisterHTTPRoute 注册路由
-func RegisterHTTPRoute(modulesHandler setup.Modules, srv *http.Server) (err error) {
+func RegisterHTTPRoute(engineHandler setup.Engine, srv *http.Server) (err error) {
 	stdlog.Println("|*** 注册HTTP路由：...")
 	return err
 }
