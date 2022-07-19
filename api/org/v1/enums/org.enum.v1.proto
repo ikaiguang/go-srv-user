@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package user.api.org.orgenumv1;
+
+option go_package = "github.com/ikaiguang/go-srv-user/api/org/v1/enums;orgenumv1";
+option java_multiple_files = true;
+option java_package = "user.api.org.orgenumv1";
+option java_outer_classname = "TbApiOrgOrgEnumV1";
+
+// OrgInitEnum OrgInitEnum enum
+message OrgInitEnum {
+  // OrgInit OrgInit enum
+  enum OrgInit {
+    // UNSPECIFIED 未指定
+    UNSPECIFIED = 0;
+  }
+}

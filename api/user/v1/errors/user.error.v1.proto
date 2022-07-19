@@ -2,26 +2,13 @@ syntax = "proto3";
 
 package user.api.user.usererrorv1;
 
-// 多语言特定包名，用于源代码引用
 option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/errors;usererrorv1";
 option java_multiple_files = true;
 option java_package = "user.api.user.usererrorv1";
-option java_outer_classname = "UserApiUserUserErrorV1";
+option java_outer_classname = "TbApiUserUserErrorV1";
 
-// ERROR 用户错误
+// ERROR user error
 enum ERROR {
-  // UNKNOWN 未知错误
-  UNKNOWN = 0;
-
-  // USER_NOT_EXIST 用户不存在
-  USER_NOT_EXIST = 1;
-  // USER_EXIST 用户已存在
-  USER_EXIST = 2;
-  // USER_NAME_INVALID 用户名不合法
-  USER_NAME_INVALID = 3;
-  // USER_NAME_EXIST 用户名已存在
-  USER_NAME_EXIST = 4;
-  // USER_PASSWORD_INVALID 用户密码不合法
-  USER_PASSWORD_INVALID = 5;
+  // USER_UNKNOWN 未知错误
+  USER_UNKNOWN = 0;
 }
-

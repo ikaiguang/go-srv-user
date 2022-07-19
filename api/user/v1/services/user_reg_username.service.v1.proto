@@ -1,0 +1,153 @@
+syntax = "proto3";
+
+package user.api.user.userservicev1;
+
+option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/services;userservicev1";
+option java_multiple_files = true;
+option java_package = "user.api.user.userservicev1";
+option java_outer_classname = "TbApiUserUserServiceV1";
+
+import "google/api/annotations.proto";
+import "github.com/ikaiguang/go-srv-user/api/user/v1/resources/user_reg_username.resource.v1.proto";
+
+// SrvUserRegUsername UserRegUsername service
+service SrvUserRegUsername {
+
+  /**
+   *
+   * @api {GET} /api/v1/UserRegUsername/GetById GetById
+   *
+   * @apiGroup UserRegUsername
+   *
+   * @apiName UserRegUsernameGetById
+   *
+   * @apiUse UserRegUsernameIdReq
+   *
+   * @apiUse UserRegUsername
+   *
+   */
+
+  // GetById get by id
+  rpc GetById(userv1.UserRegUsernameIdReq) returns (userv1.UserRegUsername) {
+    option (google.api.http) = {
+      get : "/api/v1/UserRegUsername/GetById"
+      // body:"*" // WARN: GET xxx body should not be declared.
+    };
+  }
+
+  /**
+   *
+   * @api {GET} /api/v1/UserRegUsername/List List
+   *
+   * @apiGroup UserRegUsername
+   *
+   * @apiName UserRegUsernameList
+   *
+   * @apiUse UserRegUsernameListReq
+   *
+   * @apiUse PageRequest
+   *
+   * @apiUse UserRegUsernameListResp
+   *
+   * @apiUse UserRegUsername
+   *
+   * @apiUse PageResponse
+   *
+   */
+
+  // List list
+  rpc List(userv1.UserRegUsernameListReq) returns (userv1.UserRegUsernameListResp) {
+    option (google.api.http) = {
+      get : "/api/v1/UserRegUsername/List"
+      // body:"*" // WARN: GET xxx body should not be declared.
+    };
+  }
+
+  /**
+   *
+   * @api {POST} /api/v1/UserRegUsername/Create Create
+   *
+   * @apiGroup UserRegUsername
+   *
+   * @apiName UserRegUsernameCreate
+   *
+   * @apiUse UserRegUsernameSaveReq
+   *
+   * @apiUse UserRegUsername
+   *
+   */
+
+  // Create create
+  rpc Create(userv1.UserRegUsernameSaveReq) returns (userv1.UserRegUsername) {
+    option (google.api.http) = {
+      post : "/api/v1/UserRegUsername/Create"
+      body : "*"
+    };
+  }
+
+  /**
+   *
+   * @api {PUT} /api/v1/UserRegUsername/Update Update
+   *
+   * @apiGroup UserRegUsername
+   *
+   * @apiName UserRegUsernameUpdate
+   *
+   * @apiUse UserRegUsernameSaveReq
+   *
+   * @apiUse UserRegUsername
+   *
+   */
+
+  // Update update
+  rpc Update(userv1.UserRegUsernameSaveReq) returns (userv1.UserRegUsername) {
+    option (google.api.http) = {
+      put : "/api/v1/UserRegUsername/Update"
+      body : "*"
+    };
+  }
+
+  /**
+   *
+   * @api {DELETE} /api/v1/UserRegUsername/Delete Delete
+   *
+   * @apiGroup UserRegUsername
+   *
+   * @apiName UserRegUsernameDelete
+   *
+   * @apiUse UserRegUsernameIdReq
+   *
+   * @apiUse UserRegUsernameProcessResult
+   *
+   */
+
+  // Delete delete
+  rpc Delete(userv1.UserRegUsernameIdReq) returns (userv1.UserRegUsernameProcessResult) {
+    option (google.api.http) = {
+      delete : "/api/v1/UserRegUsername/Delete"
+      // body:"*" // WARN: DELETE xxx body should not be declared.
+    };
+  }
+
+  /**
+   *
+   * @api {DELETE} /api/v1/UserRegUsername/Destroy Destroy
+   *
+   * @apiGroup UserRegUsername
+   *
+   * @apiName UserRegUsernameDestroy
+   *
+   * @apiUse UserRegUsernameIdsReq
+   *
+   * @apiUse UserRegUsernameProcessResult
+   *
+   */
+
+  // Destroy destroy
+  rpc Destroy(userv1.UserRegUsernameIdsReq) returns (userv1.UserRegUsernameProcessResult) {
+    option (google.api.http) = {
+      delete : "/api/v1/UserRegUsername/Destroy"
+      // body:"*" // WARN: DELETE xxx body should not be declared.
+    };
+  }
+}

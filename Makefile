@@ -11,6 +11,9 @@ info:
 	@echo "==> GIT_BRANCH: $(GIT_BRANCH)"
 	@echo "==> GIT_VERSION: $(GIT_VERSION)"
 
+.PHONY: proto_org
+proto_org:
+	go run ./cmd/proto/... -path=./api/org
 .PHONY: proto_user
 proto_user:
 	go run ./cmd/proto/... -path=./api/user

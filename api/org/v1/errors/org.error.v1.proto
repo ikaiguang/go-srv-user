@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package user.api.org.orgerrorv1;
+
+option go_package = "github.com/ikaiguang/go-srv-user/api/org/v1/errors;orgerrorv1";
+option java_multiple_files = true;
+option java_package = "user.api.org.orgerrorv1";
+option java_outer_classname = "TbApiOrgOrgErrorV1";
+
+// ERROR org error
+enum ERROR {
+  // ORG_UNKNOWN 未知错误
+  ORG_UNKNOWN = 0;
+}

@@ -1,0 +1,135 @@
+syntax = "proto3";
+
+package user.api.user.userv1;
+
+option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/resources;userv1";
+option java_multiple_files = true;
+option java_package = "user.api.user.userv1";
+option java_outer_classname = "TbApiUserUserV1";
+
+import "github.com/ikaiguang/go-srv-kit/api/page/v1/page.v1.proto";
+
+/**
+ *
+ * @apiDefine UserRegMobile user_reg_mobile
+ *
+ * @apiSuccess (UserRegMobile) {uint64} id ID
+ * @apiSuccess (UserRegMobile) {string} user_mobile 用户手机号码
+ * @apiSuccess (UserRegMobile) {string} created_time 创建时间
+ * @apiSuccess (UserRegMobile) {string} updated_time 最后修改时间
+ * @apiSuccess (UserRegMobile) {string} user_uuid uuid
+ *
+ */
+
+// UserRegMobile ENGINE InnoDB CHARSET utf8mb4 COMMENT '用户-注册-手机号'
+message UserRegMobile {
+  // id ID
+  uint64 id = 1;
+  // user_mobile 用户手机号码
+  string user_mobile = 2;
+  // created_time 创建时间
+  string created_time = 3;
+  // updated_time 最后修改时间
+  string updated_time = 4;
+  // user_uuid uuid
+  string user_uuid = 5;
+}
+
+/**
+ *
+ * @apiDefine UserRegMobileSaveReq UserRegMobileSaveReq
+ *
+ * @apiParam (UserRegMobileSaveReq) {uint64} id ID
+ * @apiParam (UserRegMobileSaveReq) {string} user_mobile 用户手机号码
+ * @apiParam (UserRegMobileSaveReq) {string} created_time 创建时间
+ * @apiParam (UserRegMobileSaveReq) {string} updated_time 最后修改时间
+ * @apiParam (UserRegMobileSaveReq) {string} user_uuid uuid
+ *
+ */
+
+// UserRegMobileSaveReq save
+message UserRegMobileSaveReq {
+  // id ID
+  uint64 id = 1;
+  // user_mobile 用户手机号码
+  string user_mobile = 2;
+  // created_time 创建时间
+  string created_time = 3;
+  // updated_time 最后修改时间
+  string updated_time = 4;
+  // user_uuid uuid
+  string user_uuid = 5;
+}
+
+/**
+ *
+ * @apiDefine UserRegMobileIdReq UserRegMobileIdReq
+ *
+ * @apiParam (UserRegMobileIdReq) {int64} user_reg_mobile_id id
+ *
+ */
+
+// UserRegMobileIdReq id
+message UserRegMobileIdReq {
+  // user_reg_mobile_id id
+  int64 user_reg_mobile_id = 1;
+}
+
+/**
+ *
+ * @apiDefine UserRegMobileIdsReq UserRegMobileIdsReq
+ *
+ * @apiParam (UserRegMobileIdsReq) {int64-array} user_reg_mobile_ids ids
+ *
+ */
+
+// UserRegMobileIdsReq ids
+message UserRegMobileIdsReq {
+  // user_reg_mobile_ids ids
+  repeated int64 user_reg_mobile_ids = 1;
+}
+
+/**
+ *
+ * @apiDefine UserRegMobileListReq UserRegMobileListReq
+ *
+ * @apiParam (UserRegMobileListReq) {kit.api.page.pagev1.PageRequest} page_request paging request
+ *
+ */
+
+// UserRegMobileListReq list
+message UserRegMobileListReq {
+  // page_request paging request
+  kit.api.page.pagev1.PageRequest page_request = 1;
+}
+
+/**
+ *
+ * @apiDefine UserRegMobileListResp UserRegMobileListResp
+ *
+ * @apiSuccess (UserRegMobileListResp) {UserRegMobile-array} list UserRegMobile-array
+ * @apiSuccess (UserRegMobileListResp) {kit.api.page.pagev1.PageResponse} page_info paging response
+ *
+ */
+
+// UserRegMobileListResp list
+message UserRegMobileListResp {
+  // list UserRegMobile-array
+  repeated UserRegMobile list = 1;
+  // page_info paging response
+  kit.api.page.pagev1.PageResponse page_info = 2;
+}
+
+/**
+ *
+ * @apiDefine UserRegMobileProcessResult UserRegMobileProcessResult
+ *
+ * @apiSuccess (UserRegMobileProcessResult) {bool} success true or false
+ *
+ */
+
+// UserRegMobileProcessResult process result
+message UserRegMobileProcessResult {
+  // success true or false
+  bool success = 1;
+}

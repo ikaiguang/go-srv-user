@@ -1,0 +1,153 @@
+syntax = "proto3";
+
+package user.api.org.orgservicev1;
+
+option go_package = "github.com/ikaiguang/go-srv-user/api/org/v1/services;orgservicev1";
+option java_multiple_files = true;
+option java_package = "user.api.org.orgservicev1";
+option java_outer_classname = "TbApiOrgOrgServiceV1";
+
+import "google/api/annotations.proto";
+import "github.com/ikaiguang/go-srv-user/api/org/v1/resources/org.resource.v1.proto";
+
+// SrvOrg Org service
+service SrvOrg {
+
+  /**
+   *
+   * @api {GET} /api/v1/Org/GetById GetById
+   *
+   * @apiGroup Org
+   *
+   * @apiName OrgGetById
+   *
+   * @apiUse OrgIdReq
+   *
+   * @apiUse Org
+   *
+   */
+
+  // GetById get by id
+  rpc GetById(orgv1.OrgIdReq) returns (orgv1.Org) {
+    option (google.api.http) = {
+      get : "/api/v1/Org/GetById"
+      // body:"*" // WARN: GET xxx body should not be declared.
+    };
+  }
+
+  /**
+   *
+   * @api {GET} /api/v1/Org/List List
+   *
+   * @apiGroup Org
+   *
+   * @apiName OrgList
+   *
+   * @apiUse OrgListReq
+   *
+   * @apiUse PageRequest
+   *
+   * @apiUse OrgListResp
+   *
+   * @apiUse Org
+   *
+   * @apiUse PageResponse
+   *
+   */
+
+  // List list
+  rpc List(orgv1.OrgListReq) returns (orgv1.OrgListResp) {
+    option (google.api.http) = {
+      get : "/api/v1/Org/List"
+      // body:"*" // WARN: GET xxx body should not be declared.
+    };
+  }
+
+  /**
+   *
+   * @api {POST} /api/v1/Org/Create Create
+   *
+   * @apiGroup Org
+   *
+   * @apiName OrgCreate
+   *
+   * @apiUse OrgSaveReq
+   *
+   * @apiUse Org
+   *
+   */
+
+  // Create create
+  rpc Create(orgv1.OrgSaveReq) returns (orgv1.Org) {
+    option (google.api.http) = {
+      post : "/api/v1/Org/Create"
+      body : "*"
+    };
+  }
+
+  /**
+   *
+   * @api {PUT} /api/v1/Org/Update Update
+   *
+   * @apiGroup Org
+   *
+   * @apiName OrgUpdate
+   *
+   * @apiUse OrgSaveReq
+   *
+   * @apiUse Org
+   *
+   */
+
+  // Update update
+  rpc Update(orgv1.OrgSaveReq) returns (orgv1.Org) {
+    option (google.api.http) = {
+      put : "/api/v1/Org/Update"
+      body : "*"
+    };
+  }
+
+  /**
+   *
+   * @api {DELETE} /api/v1/Org/Delete Delete
+   *
+   * @apiGroup Org
+   *
+   * @apiName OrgDelete
+   *
+   * @apiUse OrgIdReq
+   *
+   * @apiUse OrgProcessResult
+   *
+   */
+
+  // Delete delete
+  rpc Delete(orgv1.OrgIdReq) returns (orgv1.OrgProcessResult) {
+    option (google.api.http) = {
+      delete : "/api/v1/Org/Delete"
+      // body:"*" // WARN: DELETE xxx body should not be declared.
+    };
+  }
+
+  /**
+   *
+   * @api {DELETE} /api/v1/Org/Destroy Destroy
+   *
+   * @apiGroup Org
+   *
+   * @apiName OrgDestroy
+   *
+   * @apiUse OrgIdsReq
+   *
+   * @apiUse OrgProcessResult
+   *
+   */
+
+  // Destroy destroy
+  rpc Destroy(orgv1.OrgIdsReq) returns (orgv1.OrgProcessResult) {
+    option (google.api.http) = {
+      delete : "/api/v1/Org/Destroy"
+      // body:"*" // WARN: DELETE xxx body should not be declared.
+    };
+  }
+}

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package user.api.user.userservicev1;
+
+option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/services;userservicev1";
+option java_multiple_files = true;
+option java_package = "user.api.user.userservicev1";
+option java_outer_classname = "TbApiUserUserServiceV1";
+
+import "google/api/annotations.proto";
+import "github.com/ikaiguang/go-srv-user/api/user/v1/resources/user_auth.resource.v1.proto";
+
+// SrvUserAuth 管理员服务
+service SrvUserAuth {
+  // LoginOrRegByPhone 手机登陆(自动注册)
+  rpc LoginOrRegByPhone(userv1.LoginOrRegByPhoneReq) returns (userv1.LoginResp) {
+    option (google.api.http) = {
+      post : "/api/v1/user/login-or-reg-phone"
+      body : "*"
+    };
+  }
+}

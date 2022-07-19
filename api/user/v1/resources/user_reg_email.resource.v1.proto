@@ -1,0 +1,135 @@
+syntax = "proto3";
+
+package user.api.user.userv1;
+
+option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/resources;userv1";
+option java_multiple_files = true;
+option java_package = "user.api.user.userv1";
+option java_outer_classname = "TbApiUserUserV1";
+
+import "github.com/ikaiguang/go-srv-kit/api/page/v1/page.v1.proto";
+
+/**
+ *
+ * @apiDefine UserRegEmail user_reg_email
+ *
+ * @apiSuccess (UserRegEmail) {uint64} id ID
+ * @apiSuccess (UserRegEmail) {string} user_email 用户手机号码
+ * @apiSuccess (UserRegEmail) {string} created_time 创建时间
+ * @apiSuccess (UserRegEmail) {string} updated_time 最后修改时间
+ * @apiSuccess (UserRegEmail) {string} user_uuid uuid
+ *
+ */
+
+// UserRegEmail ENGINE InnoDB CHARSET utf8mb4 COMMENT '用户-注册-邮箱'
+message UserRegEmail {
+  // id ID
+  uint64 id = 1;
+  // user_email 用户手机号码
+  string user_email = 2;
+  // created_time 创建时间
+  string created_time = 3;
+  // updated_time 最后修改时间
+  string updated_time = 4;
+  // user_uuid uuid
+  string user_uuid = 5;
+}
+
+/**
+ *
+ * @apiDefine UserRegEmailSaveReq UserRegEmailSaveReq
+ *
+ * @apiParam (UserRegEmailSaveReq) {uint64} id ID
+ * @apiParam (UserRegEmailSaveReq) {string} user_email 用户手机号码
+ * @apiParam (UserRegEmailSaveReq) {string} created_time 创建时间
+ * @apiParam (UserRegEmailSaveReq) {string} updated_time 最后修改时间
+ * @apiParam (UserRegEmailSaveReq) {string} user_uuid uuid
+ *
+ */
+
+// UserRegEmailSaveReq save
+message UserRegEmailSaveReq {
+  // id ID
+  uint64 id = 1;
+  // user_email 用户手机号码
+  string user_email = 2;
+  // created_time 创建时间
+  string created_time = 3;
+  // updated_time 最后修改时间
+  string updated_time = 4;
+  // user_uuid uuid
+  string user_uuid = 5;
+}
+
+/**
+ *
+ * @apiDefine UserRegEmailIdReq UserRegEmailIdReq
+ *
+ * @apiParam (UserRegEmailIdReq) {int64} user_reg_email_id id
+ *
+ */
+
+// UserRegEmailIdReq id
+message UserRegEmailIdReq {
+  // user_reg_email_id id
+  int64 user_reg_email_id = 1;
+}
+
+/**
+ *
+ * @apiDefine UserRegEmailIdsReq UserRegEmailIdsReq
+ *
+ * @apiParam (UserRegEmailIdsReq) {int64-array} user_reg_email_ids ids
+ *
+ */
+
+// UserRegEmailIdsReq ids
+message UserRegEmailIdsReq {
+  // user_reg_email_ids ids
+  repeated int64 user_reg_email_ids = 1;
+}
+
+/**
+ *
+ * @apiDefine UserRegEmailListReq UserRegEmailListReq
+ *
+ * @apiParam (UserRegEmailListReq) {kit.api.page.pagev1.PageRequest} page_request paging request
+ *
+ */
+
+// UserRegEmailListReq list
+message UserRegEmailListReq {
+  // page_request paging request
+  kit.api.page.pagev1.PageRequest page_request = 1;
+}
+
+/**
+ *
+ * @apiDefine UserRegEmailListResp UserRegEmailListResp
+ *
+ * @apiSuccess (UserRegEmailListResp) {UserRegEmail-array} list UserRegEmail-array
+ * @apiSuccess (UserRegEmailListResp) {kit.api.page.pagev1.PageResponse} page_info paging response
+ *
+ */
+
+// UserRegEmailListResp list
+message UserRegEmailListResp {
+  // list UserRegEmail-array
+  repeated UserRegEmail list = 1;
+  // page_info paging response
+  kit.api.page.pagev1.PageResponse page_info = 2;
+}
+
+/**
+ *
+ * @apiDefine UserRegEmailProcessResult UserRegEmailProcessResult
+ *
+ * @apiSuccess (UserRegEmailProcessResult) {bool} success true or false
+ *
+ */
+
+// UserRegEmailProcessResult process result
+message UserRegEmailProcessResult {
+  // success true or false
+  bool success = 1;
+}

@@ -2,77 +2,152 @@ syntax = "proto3";
 
 package user.api.user.userservicev1;
 
-// 多语言特定包名，用于源代码引用
 option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/services;userservicev1";
 option java_multiple_files = true;
 option java_package = "user.api.user.userservicev1";
-option java_outer_classname = "UserApiUserUserServiceV1";
+option java_outer_classname = "TbApiUserUserServiceV1";
 
 import "google/api/annotations.proto";
 import "github.com/ikaiguang/go-srv-user/api/user/v1/resources/user.resource.v1.proto";
 
-// SrvUser 用户服务
+// SrvUser User service
 service SrvUser {
-  // Login 用户登录
-  rpc Login(userv1.LoginRequest) returns (userv1.LoginResponse) {
+
+  /**
+   *
+   * @api {GET} /api/v1/User/GetById GetById
+   *
+   * @apiGroup User
+   *
+   * @apiName UserGetById
+   *
+   * @apiUse UserIdReq
+   *
+   * @apiUse User
+   *
+   */
+
+  // GetById get by id
+  rpc GetById(userv1.UserIdReq) returns (userv1.User) {
     option (google.api.http) = {
-      post: "/api/v1/user/login"
-      body: "*"
+      get : "/api/v1/User/GetById"
+      // body:"*" // WARN: GET xxx body should not be declared.
     };
   }
-  // Register 用户注册
-  rpc Register(userv1.RegisterRequest) returns (userv1.RegisterResponse) {
+
+  /**
+   *
+   * @api {GET} /api/v1/User/List List
+   *
+   * @apiGroup User
+   *
+   * @apiName UserList
+   *
+   * @apiUse UserListReq
+   *
+   * @apiUse PageRequest
+   *
+   * @apiUse UserListResp
+   *
+   * @apiUse User
+   *
+   * @apiUse PageResponse
+   *
+   */
+
+  // List list
+  rpc List(userv1.UserListReq) returns (userv1.UserListResp) {
     option (google.api.http) = {
-      post: "/api/v1/user/register"
-      body: "*"
+      get : "/api/v1/User/List"
+      // body:"*" // WARN: GET xxx body should not be declared.
     };
   }
-  // Info 用户信息
-  rpc Info(userv1.InfoRequest) returns (userv1.Info) {
+
+  /**
+   *
+   * @api {POST} /api/v1/User/Create Create
+   *
+   * @apiGroup User
+   *
+   * @apiName UserCreate
+   *
+   * @apiUse UserSaveReq
+   *
+   * @apiUse User
+   *
+   */
+
+  // Create create
+  rpc Create(userv1.UserSaveReq) returns (userv1.User) {
     option (google.api.http) = {
-      get: "/api/v1/user/info"
+      post : "/api/v1/User/Create"
+      body : "*"
     };
   }
-  // ChangePassword 用户修改密码
-  rpc ChangePassword(userv1.ChangePasswordRequest) returns (userv1.ChangePasswordResponse) {
+
+  /**
+   *
+   * @api {PUT} /api/v1/User/Update Update
+   *
+   * @apiGroup User
+   *
+   * @apiName UserUpdate
+   *
+   * @apiUse UserSaveReq
+   *
+   * @apiUse User
+   *
+   */
+
+  // Update update
+  rpc Update(userv1.UserSaveReq) returns (userv1.User) {
     option (google.api.http) = {
-      put: "/api/v1/user/change-password"
-      body: "*"
+      put : "/api/v1/User/Update"
+      body : "*"
     };
   }
-  // ChangeAvatar 用户修改头像
-  rpc ChangeAvatar(userv1.ChangeAvatarRequest) returns (userv1.ChangeAvatarResponse) {
+
+  /**
+   *
+   * @api {DELETE} /api/v1/User/Delete Delete
+   *
+   * @apiGroup User
+   *
+   * @apiName UserDelete
+   *
+   * @apiUse UserIdReq
+   *
+   * @apiUse UserProcessResult
+   *
+   */
+
+  // Delete delete
+  rpc Delete(userv1.UserIdReq) returns (userv1.UserProcessResult) {
     option (google.api.http) = {
-      put: "/api/v1/user/change-avatar"
-      body: "*"
+      delete : "/api/v1/User/Delete"
+      // body:"*" // WARN: DELETE xxx body should not be declared.
     };
   }
-  // ChangeMobile 用户修改手机号
-  rpc ChangeMobile(userv1.ChangeMobileRequest) returns (userv1.ChangeMobileResponse) {
+
+  /**
+   *
+   * @api {DELETE} /api/v1/User/Destroy Destroy
+   *
+   * @apiGroup User
+   *
+   * @apiName UserDestroy
+   *
+   * @apiUse UserIdsReq
+   *
+   * @apiUse UserProcessResult
+   *
+   */
+
+  // Destroy destroy
+  rpc Destroy(userv1.UserIdsReq) returns (userv1.UserProcessResult) {
     option (google.api.http) = {
-      put: "/api/v1/user/change-mobile"
-      body: "*"
-    };
-  }
-  // ChangeEmail 用户修改邮箱
-  rpc ChangeEmail(userv1.ChangeEmailRequest) returns (userv1.ChangeEmailResponse) {
-    option (google.api.http) = {
-      put: "/api/v1/user/change-email"
-      body: "*"
-    };
-  }
-  // ChangeNickname 用户修改昵称
-  rpc ChangeNickname(userv1.ChangeNicknameRequest) returns (userv1.ChangeNicknameResponse) {
-    option (google.api.http) = {
-      put: "/api/v1/user/change-nickname"
-      body: "*"
-    };
-  }
-  // ChangeSex 用户修改性别
-  rpc ChangeSex(userv1.ChangeSexRequest) returns (userv1.ChangeSexResponse) {
-    option (google.api.http) = {
-      put: "/api/v1/user/change-sex"
-      body: "*"
+      delete : "/api/v1/User/Destroy"
+      // body:"*" // WARN: DELETE xxx body should not be declared.
     };
   }
 }

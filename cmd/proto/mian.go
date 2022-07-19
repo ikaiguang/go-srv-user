@@ -44,7 +44,7 @@ func main() {
 	}
 	err := genManyProtoScriptFileAndExecScript(dirs)
 	if err != nil {
-		fmt.Printf("%+v\n", err)
+		fmt.Printf("生成协议失败：%+v\n", err)
 		return
 	}
 }
@@ -93,6 +93,11 @@ func genProtoScriptFileAndExecScript(dir string) (scriptFilePath string, err err
 		newArgs := append(args, scripts[i])
 		out, err := cmdutil.RunCommand(command, newArgs)
 		if err != nil {
+			err = pkgerrors.WithStack(err)
+			return scriptFilePath, err
+		}
+		if strings.Contains(string(out), "exit status 1") {
+			err = fmt.Errorf("\n\tscript : %s \n\terror : %s", scripts[i], out)
 			err = pkgerrors.WithStack(err)
 			return scriptFilePath, err
 		}

@@ -1,0 +1,111 @@
+syntax = "proto3";
+
+package user.api.user.userv1;
+
+option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/resources;userv1";
+option java_multiple_files = true;
+option java_package = "user.api.user.userv1";
+option java_outer_classname = "TbApiUserUserV1";
+
+import "github.com/ikaiguang/go-srv-user/api/user/v1/enums/user.enum.v1.proto";
+import "github.com/ikaiguang/go-srv-user/api/user/v1/resources/user.resource.v1.proto";
+
+// LoginOrRegByPhoneReq 手机登陆(自动注册)
+message LoginOrRegByPhoneReq {
+  // user_mobile 手机号码
+  string user_mobile = 1;
+  // password 密码
+  string password = 4;
+  // code 验证码
+  string code = 5;
+  // login_platform 登录平台；web/app/github/...
+  string login_platform = 6;
+}
+
+// RegByUserNameReq 用户注册
+message RegByUserNameReq {
+  string user_name = 1;
+  string password = 2;
+  string password_confirm = 3;
+  string code = 4;
+}
+
+// LoginByUserNameReq 用户登录
+message LoginByUserNameReq {
+  string user_name = 1;
+  string password = 2;
+  string code = 3;
+}
+
+// RegByEmailReq 用户注册
+message RegByEmailReq {
+  string user_email = 1;
+  string password = 2;
+  string password_confirm = 3;
+  string code = 4;
+}
+
+// LoginByEmailReq 用户登录
+message LoginByEmailReq {
+  string user_email = 1;
+  string password = 2;
+  string code = 3;
+}
+
+// Info 用户信息
+message Info {
+  uint64 id = 1;
+  string user_mobile = 2;
+  string user_email = 3;
+  string user_nickname = 4;
+  string user_avatar = 5;
+  userenumv1.UserGenderEnum.UserGender user_gender = 6;
+  userenumv1.UserStatusEnum.UserStatus user_status = 7;
+}
+
+// LoginResp 用户登录
+message LoginResp {
+  userv1.Info user_info = 1;
+
+  string token = 10;
+}
+
+// ChangePasswordReq 修改密码
+message ChangePasswordReq {
+  string old_password = 1;
+  string new_password = 2;
+  string new_password_confirm = 3;
+}
+
+// ChangePasswordResp 修改密码
+message ChangePasswordResp {}
+
+// ChangeAvatarReq 修改头像
+message ChangeAvatarReq { string user_avatar = 2; }
+
+// ChangeAvatarResp 修改头像
+message ChangeAvatarResp {}
+
+// ChangeMobileReq 修改手机号
+message ChangeMobileReq { string user_mobile = 2; }
+
+// ChangeMobileResp 修改手机号
+message ChangeMobileResp {}
+
+// ChangeEmailReq 修改邮箱
+message ChangeEmailReq { string user_email = 2; }
+
+// ChangeEmailResp 修改邮箱
+message ChangeEmailResp {}
+
+// ChangeNicknameReq 修改昵称
+message ChangeNicknameReq { string user_nickname = 2; }
+
+// ChangeNicknameResp 修改昵称
+message ChangeNicknameResp {}
+
+// ChangeGenderReq 修改性别
+message ChangeGenderReq { userenumv1.UserGenderEnum.UserGender user_gender = 6; }
+
+// ChangeGenderResp 修改性别
+message ChangeGenderResp {}

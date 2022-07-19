@@ -1,0 +1,135 @@
+syntax = "proto3";
+
+package user.api.user.userv1;
+
+option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/resources;userv1";
+option java_multiple_files = true;
+option java_package = "user.api.user.userv1";
+option java_outer_classname = "TbApiUserUserV1";
+
+import "github.com/ikaiguang/go-srv-kit/api/page/v1/page.v1.proto";
+
+/**
+ *
+ * @apiDefine UserRegUsername user_reg_username
+ *
+ * @apiSuccess (UserRegUsername) {uint64} id ID
+ * @apiSuccess (UserRegUsername) {string} user_name 用户名
+ * @apiSuccess (UserRegUsername) {string} created_time 创建时间
+ * @apiSuccess (UserRegUsername) {string} updated_time 最后修改时间
+ * @apiSuccess (UserRegUsername) {string} user_uuid uuid
+ *
+ */
+
+// UserRegUsername ENGINE InnoDB CHARSET utf8mb4 COMMENT '用户-注册-用户名'
+message UserRegUsername {
+  // id ID
+  uint64 id = 1;
+  // user_name 用户名
+  string user_name = 2;
+  // created_time 创建时间
+  string created_time = 3;
+  // updated_time 最后修改时间
+  string updated_time = 4;
+  // user_uuid uuid
+  string user_uuid = 5;
+}
+
+/**
+ *
+ * @apiDefine UserRegUsernameSaveReq UserRegUsernameSaveReq
+ *
+ * @apiParam (UserRegUsernameSaveReq) {uint64} id ID
+ * @apiParam (UserRegUsernameSaveReq) {string} user_name 用户名
+ * @apiParam (UserRegUsernameSaveReq) {string} created_time 创建时间
+ * @apiParam (UserRegUsernameSaveReq) {string} updated_time 最后修改时间
+ * @apiParam (UserRegUsernameSaveReq) {string} user_uuid uuid
+ *
+ */
+
+// UserRegUsernameSaveReq save
+message UserRegUsernameSaveReq {
+  // id ID
+  uint64 id = 1;
+  // user_name 用户名
+  string user_name = 2;
+  // created_time 创建时间
+  string created_time = 3;
+  // updated_time 最后修改时间
+  string updated_time = 4;
+  // user_uuid uuid
+  string user_uuid = 5;
+}
+
+/**
+ *
+ * @apiDefine UserRegUsernameIdReq UserRegUsernameIdReq
+ *
+ * @apiParam (UserRegUsernameIdReq) {int64} user_reg_username_id id
+ *
+ */
+
+// UserRegUsernameIdReq id
+message UserRegUsernameIdReq {
+  // user_reg_username_id id
+  int64 user_reg_username_id = 1;
+}
+
+/**
+ *
+ * @apiDefine UserRegUsernameIdsReq UserRegUsernameIdsReq
+ *
+ * @apiParam (UserRegUsernameIdsReq) {int64-array} user_reg_username_ids ids
+ *
+ */
+
+// UserRegUsernameIdsReq ids
+message UserRegUsernameIdsReq {
+  // user_reg_username_ids ids
+  repeated int64 user_reg_username_ids = 1;
+}
+
+/**
+ *
+ * @apiDefine UserRegUsernameListReq UserRegUsernameListReq
+ *
+ * @apiParam (UserRegUsernameListReq) {kit.api.page.pagev1.PageRequest} page_request paging request
+ *
+ */
+
+// UserRegUsernameListReq list
+message UserRegUsernameListReq {
+  // page_request paging request
+  kit.api.page.pagev1.PageRequest page_request = 1;
+}
+
+/**
+ *
+ * @apiDefine UserRegUsernameListResp UserRegUsernameListResp
+ *
+ * @apiSuccess (UserRegUsernameListResp) {UserRegUsername-array} list UserRegUsername-array
+ * @apiSuccess (UserRegUsernameListResp) {kit.api.page.pagev1.PageResponse} page_info paging response
+ *
+ */
+
+// UserRegUsernameListResp list
+message UserRegUsernameListResp {
+  // list UserRegUsername-array
+  repeated UserRegUsername list = 1;
+  // page_info paging response
+  kit.api.page.pagev1.PageResponse page_info = 2;
+}
+
+/**
+ *
+ * @apiDefine UserRegUsernameProcessResult UserRegUsernameProcessResult
+ *
+ * @apiSuccess (UserRegUsernameProcessResult) {bool} success true or false
+ *
+ */
+
+// UserRegUsernameProcessResult process result
+message UserRegUsernameProcessResult {
+  // success true or false
+  bool success = 1;
+}

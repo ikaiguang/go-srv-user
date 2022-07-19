@@ -2,11 +2,19 @@ syntax = "proto3";
 
 package user.api.user.userenumv1;
 
-// 多语言特定包名，用于源代码引用
 option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/enums;userenumv1";
 option java_multiple_files = true;
 option java_package = "user.api.user.userenumv1";
-option java_outer_classname = "UserApiUserUserEnumV1";
+option java_outer_classname = "TbApiUserUserEnumV1";
+
+// UserInitEnum UserInitEnum enum
+message UserInitEnum {
+  // UserInit UserInit enum
+  enum UserInit {
+    // UNSPECIFIED 未指定
+    UNSPECIFIED = 0;
+  }
+}
 
 // UserStatusEnum 用户状态
 message UserStatusEnum {
@@ -28,10 +36,10 @@ message UserStatusEnum {
   }
 }
 
-// UserSexEnum 用户性别
-message UserSexEnum {
-  // UserSex 枚举值
-  enum UserSex {
+// UserGenderEnum 用户性别
+message UserGenderEnum {
+  // UserGender 枚举值
+  enum UserGender {
     // UNSPECIFIED 未指定
     UNSPECIFIED = 0;
 

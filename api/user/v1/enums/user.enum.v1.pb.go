@@ -20,6 +20,51 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// UserInit UserInit enum
+type UserInitEnum_UserInit int32
+
+const (
+	// UNSPECIFIED 未指定
+	UserInitEnum_UNSPECIFIED UserInitEnum_UserInit = 0
+)
+
+// Enum value maps for UserInitEnum_UserInit.
+var (
+	UserInitEnum_UserInit_name = map[int32]string{
+		0: "UNSPECIFIED",
+	}
+	UserInitEnum_UserInit_value = map[string]int32{
+		"UNSPECIFIED": 0,
+	}
+)
+
+func (x UserInitEnum_UserInit) Enum() *UserInitEnum_UserInit {
+	p := new(UserInitEnum_UserInit)
+	*p = x
+	return p
+}
+
+func (x UserInitEnum_UserInit) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (UserInitEnum_UserInit) Descriptor() protoreflect.EnumDescriptor {
+	return file_api_user_v1_enums_user_enum_v1_proto_enumTypes[0].Descriptor()
+}
+
+func (UserInitEnum_UserInit) Type() protoreflect.EnumType {
+	return &file_api_user_v1_enums_user_enum_v1_proto_enumTypes[0]
+}
+
+func (x UserInitEnum_UserInit) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use UserInitEnum_UserInit.Descriptor instead.
+func (UserInitEnum_UserInit) EnumDescriptor() ([]byte, []int) {
+	return file_api_user_v1_enums_user_enum_v1_proto_rawDescGZIP(), []int{0, 0}
+}
+
 // UserStatus 枚举值
 type UserStatusEnum_UserStatus int32
 
@@ -69,11 +114,11 @@ func (x UserStatusEnum_UserStatus) String() string {
 }
 
 func (UserStatusEnum_UserStatus) Descriptor() protoreflect.EnumDescriptor {
-	return file_api_user_v1_enums_user_enum_v1_proto_enumTypes[0].Descriptor()
+	return file_api_user_v1_enums_user_enum_v1_proto_enumTypes[1].Descriptor()
 }
 
 func (UserStatusEnum_UserStatus) Type() protoreflect.EnumType {
-	return &file_api_user_v1_enums_user_enum_v1_proto_enumTypes[0]
+	return &file_api_user_v1_enums_user_enum_v1_proto_enumTypes[1]
 }
 
 func (x UserStatusEnum_UserStatus) Number() protoreflect.EnumNumber {
@@ -82,32 +127,32 @@ func (x UserStatusEnum_UserStatus) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use UserStatusEnum_UserStatus.Descriptor instead.
 func (UserStatusEnum_UserStatus) EnumDescriptor() ([]byte, []int) {
-	return file_api_user_v1_enums_user_enum_v1_proto_rawDescGZIP(), []int{0, 0}
+	return file_api_user_v1_enums_user_enum_v1_proto_rawDescGZIP(), []int{1, 0}
 }
 
-// UserSex 枚举值
-type UserSexEnum_UserSex int32
+// UserGender 枚举值
+type UserGenderEnum_UserGender int32
 
 const (
 	// UNSPECIFIED 未指定
-	UserSexEnum_UNSPECIFIED UserSexEnum_UserSex = 0
+	UserGenderEnum_UNSPECIFIED UserGenderEnum_UserGender = 0
 	// MALE 男
-	UserSexEnum_MALE UserSexEnum_UserSex = 1
+	UserGenderEnum_MALE UserGenderEnum_UserGender = 1
 	// FEMALE 女
-	UserSexEnum_FEMALE UserSexEnum_UserSex = 2
+	UserGenderEnum_FEMALE UserGenderEnum_UserGender = 2
 	// SECRET 密码
-	UserSexEnum_SECRET UserSexEnum_UserSex = 3
+	UserGenderEnum_SECRET UserGenderEnum_UserGender = 3
 )
 
-// Enum value maps for UserSexEnum_UserSex.
+// Enum value maps for UserGenderEnum_UserGender.
 var (
-	UserSexEnum_UserSex_name = map[int32]string{
+	UserGenderEnum_UserGender_name = map[int32]string{
 		0: "UNSPECIFIED",
 		1: "MALE",
 		2: "FEMALE",
 		3: "SECRET",
 	}
-	UserSexEnum_UserSex_value = map[string]int32{
+	UserGenderEnum_UserGender_value = map[string]int32{
 		"UNSPECIFIED": 0,
 		"MALE":        1,
 		"FEMALE":      2,
@@ -115,31 +160,70 @@ var (
 	}
 )
 
-func (x UserSexEnum_UserSex) Enum() *UserSexEnum_UserSex {
-	p := new(UserSexEnum_UserSex)
+func (x UserGenderEnum_UserGender) Enum() *UserGenderEnum_UserGender {
+	p := new(UserGenderEnum_UserGender)
 	*p = x
 	return p
 }
 
-func (x UserSexEnum_UserSex) String() string {
+func (x UserGenderEnum_UserGender) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (UserSexEnum_UserSex) Descriptor() protoreflect.EnumDescriptor {
-	return file_api_user_v1_enums_user_enum_v1_proto_enumTypes[1].Descriptor()
+func (UserGenderEnum_UserGender) Descriptor() protoreflect.EnumDescriptor {
+	return file_api_user_v1_enums_user_enum_v1_proto_enumTypes[2].Descriptor()
 }
 
-func (UserSexEnum_UserSex) Type() protoreflect.EnumType {
-	return &file_api_user_v1_enums_user_enum_v1_proto_enumTypes[1]
+func (UserGenderEnum_UserGender) Type() protoreflect.EnumType {
+	return &file_api_user_v1_enums_user_enum_v1_proto_enumTypes[2]
 }
 
-func (x UserSexEnum_UserSex) Number() protoreflect.EnumNumber {
+func (x UserGenderEnum_UserGender) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
-// Deprecated: Use UserSexEnum_UserSex.Descriptor instead.
-func (UserSexEnum_UserSex) EnumDescriptor() ([]byte, []int) {
-	return file_api_user_v1_enums_user_enum_v1_proto_rawDescGZIP(), []int{1, 0}
+// Deprecated: Use UserGenderEnum_UserGender.Descriptor instead.
+func (UserGenderEnum_UserGender) EnumDescriptor() ([]byte, []int) {
+	return file_api_user_v1_enums_user_enum_v1_proto_rawDescGZIP(), []int{2, 0}
+}
+
+// UserInitEnum UserInitEnum enum
+type UserInitEnum struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *UserInitEnum) Reset() {
+	*x = UserInitEnum{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_api_user_v1_enums_user_enum_v1_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UserInitEnum) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserInitEnum) ProtoMessage() {}
+
+func (x *UserInitEnum) ProtoReflect() protoreflect.Message {
+	mi := &file_api_user_v1_enums_user_enum_v1_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserInitEnum.ProtoReflect.Descriptor instead.
+func (*UserInitEnum) Descriptor() ([]byte, []int) {
+	return file_api_user_v1_enums_user_enum_v1_proto_rawDescGZIP(), []int{0}
 }
 
 // UserStatusEnum 用户状态
@@ -152,7 +236,7 @@ type UserStatusEnum struct {
 func (x *UserStatusEnum) Reset() {
 	*x = UserStatusEnum{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_user_v1_enums_user_enum_v1_proto_msgTypes[0]
+		mi := &file_api_user_v1_enums_user_enum_v1_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -165,7 +249,7 @@ func (x *UserStatusEnum) String() string {
 func (*UserStatusEnum) ProtoMessage() {}
 
 func (x *UserStatusEnum) ProtoReflect() protoreflect.Message {
-	mi := &file_api_user_v1_enums_user_enum_v1_proto_msgTypes[0]
+	mi := &file_api_user_v1_enums_user_enum_v1_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -178,33 +262,33 @@ func (x *UserStatusEnum) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserStatusEnum.ProtoReflect.Descriptor instead.
 func (*UserStatusEnum) Descriptor() ([]byte, []int) {
-	return file_api_user_v1_enums_user_enum_v1_proto_rawDescGZIP(), []int{0}
+	return file_api_user_v1_enums_user_enum_v1_proto_rawDescGZIP(), []int{1}
 }
 
-// UserSexEnum 用户性别
-type UserSexEnum struct {
+// UserGenderEnum 用户性别
+type UserGenderEnum struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *UserSexEnum) Reset() {
-	*x = UserSexEnum{}
+func (x *UserGenderEnum) Reset() {
+	*x = UserGenderEnum{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_user_v1_enums_user_enum_v1_proto_msgTypes[1]
+		mi := &file_api_user_v1_enums_user_enum_v1_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
 }
 
-func (x *UserSexEnum) String() string {
+func (x *UserGenderEnum) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UserSexEnum) ProtoMessage() {}
+func (*UserGenderEnum) ProtoMessage() {}
 
-func (x *UserSexEnum) ProtoReflect() protoreflect.Message {
-	mi := &file_api_user_v1_enums_user_enum_v1_proto_msgTypes[1]
+func (x *UserGenderEnum) ProtoReflect() protoreflect.Message {
+	mi := &file_api_user_v1_enums_user_enum_v1_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -215,9 +299,9 @@ func (x *UserSexEnum) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UserSexEnum.ProtoReflect.Descriptor instead.
-func (*UserSexEnum) Descriptor() ([]byte, []int) {
-	return file_api_user_v1_enums_user_enum_v1_proto_rawDescGZIP(), []int{1}
+// Deprecated: Use UserGenderEnum.ProtoReflect.Descriptor instead.
+func (*UserGenderEnum) Descriptor() ([]byte, []int) {
+	return file_api_user_v1_enums_user_enum_v1_proto_rawDescGZIP(), []int{2}
 }
 
 var File_api_user_v1_enums_user_enum_v1_proto protoreflect.FileDescriptor
@@ -227,26 +311,30 @@ var file_api_user_v1_enums_user_enum_v1_proto_rawDesc = []byte{
 	0x75, 0x6d, 0x73, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x65, 0x6e, 0x75, 0x6d, 0x2e, 0x76, 0x31,
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x18, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x61, 0x70, 0x69,
 	0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x65, 0x6e, 0x75, 0x6d, 0x76, 0x31,
-	0x22, 0x75, 0x0a, 0x0e, 0x55, 0x73, 0x65, 0x72, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x45, 0x6e,
-	0x75, 0x6d, 0x22, 0x63, 0x0a, 0x0a, 0x55, 0x73, 0x65, 0x72, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73,
-	0x12, 0x0f, 0x0a, 0x0b, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10,
-	0x00, 0x12, 0x0f, 0x0a, 0x0b, 0x49, 0x4e, 0x41, 0x43, 0x54, 0x49, 0x56, 0x41, 0x54, 0x45, 0x44,
-	0x10, 0x01, 0x12, 0x0a, 0x0a, 0x06, 0x45, 0x4e, 0x41, 0x42, 0x4c, 0x45, 0x10, 0x02, 0x12, 0x0b,
-	0x0a, 0x07, 0x44, 0x49, 0x53, 0x41, 0x42, 0x4c, 0x45, 0x10, 0x03, 0x12, 0x0d, 0x0a, 0x09, 0x42,
-	0x4c, 0x41, 0x43, 0x4b, 0x4c, 0x49, 0x53, 0x54, 0x10, 0x04, 0x12, 0x0b, 0x0a, 0x07, 0x44, 0x45,
-	0x4c, 0x45, 0x54, 0x45, 0x44, 0x10, 0x05, 0x22, 0x4b, 0x0a, 0x0b, 0x55, 0x73, 0x65, 0x72, 0x53,
-	0x65, 0x78, 0x45, 0x6e, 0x75, 0x6d, 0x22, 0x3c, 0x0a, 0x07, 0x55, 0x73, 0x65, 0x72, 0x53, 0x65,
-	0x78, 0x12, 0x0f, 0x0a, 0x0b, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44,
-	0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x4d, 0x41, 0x4c, 0x45, 0x10, 0x01, 0x12, 0x0a, 0x0a, 0x06,
-	0x46, 0x45, 0x4d, 0x41, 0x4c, 0x45, 0x10, 0x02, 0x12, 0x0a, 0x0a, 0x06, 0x53, 0x45, 0x43, 0x52,
-	0x45, 0x54, 0x10, 0x03, 0x42, 0x72, 0x0a, 0x18, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x61, 0x70, 0x69,
-	0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x65, 0x6e, 0x75, 0x6d, 0x76, 0x31,
-	0x42, 0x15, 0x55, 0x73, 0x65, 0x72, 0x41, 0x70, 0x69, 0x55, 0x73, 0x65, 0x72, 0x55, 0x73, 0x65,
-	0x72, 0x45, 0x6e, 0x75, 0x6d, 0x56, 0x31, 0x50, 0x01, 0x5a, 0x3d, 0x67, 0x69, 0x74, 0x68, 0x75,
-	0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x69, 0x6b, 0x61, 0x69, 0x67, 0x75, 0x61, 0x6e, 0x67, 0x2f,
-	0x67, 0x6f, 0x2d, 0x73, 0x72, 0x76, 0x2d, 0x75, 0x73, 0x65, 0x72, 0x2f, 0x61, 0x70, 0x69, 0x2f,
-	0x75, 0x73, 0x65, 0x72, 0x2f, 0x76, 0x31, 0x2f, 0x65, 0x6e, 0x75, 0x6d, 0x73, 0x3b, 0x75, 0x73,
-	0x65, 0x72, 0x65, 0x6e, 0x75, 0x6d, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x22, 0x2b, 0x0a, 0x0c, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x69, 0x74, 0x45, 0x6e, 0x75, 0x6d,
+	0x22, 0x1b, 0x0a, 0x08, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x69, 0x74, 0x12, 0x0f, 0x0a, 0x0b,
+	0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x22, 0x75, 0x0a,
+	0x0e, 0x55, 0x73, 0x65, 0x72, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x45, 0x6e, 0x75, 0x6d, 0x22,
+	0x63, 0x0a, 0x0a, 0x55, 0x73, 0x65, 0x72, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x0f, 0x0a,
+	0x0b, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x0f,
+	0x0a, 0x0b, 0x49, 0x4e, 0x41, 0x43, 0x54, 0x49, 0x56, 0x41, 0x54, 0x45, 0x44, 0x10, 0x01, 0x12,
+	0x0a, 0x0a, 0x06, 0x45, 0x4e, 0x41, 0x42, 0x4c, 0x45, 0x10, 0x02, 0x12, 0x0b, 0x0a, 0x07, 0x44,
+	0x49, 0x53, 0x41, 0x42, 0x4c, 0x45, 0x10, 0x03, 0x12, 0x0d, 0x0a, 0x09, 0x42, 0x4c, 0x41, 0x43,
+	0x4b, 0x4c, 0x49, 0x53, 0x54, 0x10, 0x04, 0x12, 0x0b, 0x0a, 0x07, 0x44, 0x45, 0x4c, 0x45, 0x54,
+	0x45, 0x44, 0x10, 0x05, 0x22, 0x51, 0x0a, 0x0e, 0x55, 0x73, 0x65, 0x72, 0x47, 0x65, 0x6e, 0x64,
+	0x65, 0x72, 0x45, 0x6e, 0x75, 0x6d, 0x22, 0x3f, 0x0a, 0x0a, 0x55, 0x73, 0x65, 0x72, 0x47, 0x65,
+	0x6e, 0x64, 0x65, 0x72, 0x12, 0x0f, 0x0a, 0x0b, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46,
+	0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x4d, 0x41, 0x4c, 0x45, 0x10, 0x01, 0x12,
+	0x0a, 0x0a, 0x06, 0x46, 0x45, 0x4d, 0x41, 0x4c, 0x45, 0x10, 0x02, 0x12, 0x0a, 0x0a, 0x06, 0x53,
+	0x45, 0x43, 0x52, 0x45, 0x54, 0x10, 0x03, 0x42, 0x70, 0x0a, 0x18, 0x75, 0x73, 0x65, 0x72, 0x2e,
+	0x61, 0x70, 0x69, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x65, 0x6e, 0x75,
+	0x6d, 0x76, 0x31, 0x42, 0x13, 0x54, 0x62, 0x41, 0x70, 0x69, 0x55, 0x73, 0x65, 0x72, 0x55, 0x73,
+	0x65, 0x72, 0x45, 0x6e, 0x75, 0x6d, 0x56, 0x31, 0x50, 0x01, 0x5a, 0x3d, 0x67, 0x69, 0x74, 0x68,
+	0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x69, 0x6b, 0x61, 0x69, 0x67, 0x75, 0x61, 0x6e, 0x67,
+	0x2f, 0x67, 0x6f, 0x2d, 0x73, 0x72, 0x76, 0x2d, 0x75, 0x73, 0x65, 0x72, 0x2f, 0x61, 0x70, 0x69,
+	0x2f, 0x75, 0x73, 0x65, 0x72, 0x2f, 0x76, 0x31, 0x2f, 0x65, 0x6e, 0x75, 0x6d, 0x73, 0x3b, 0x75,
+	0x73, 0x65, 0x72, 0x65, 0x6e, 0x75, 0x6d, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x33,
 }
 
 var (
@@ -261,13 +349,15 @@ func file_api_user_v1_enums_user_enum_v1_proto_rawDescGZIP() []byte {
 	return file_api_user_v1_enums_user_enum_v1_proto_rawDescData
 }
 
-var file_api_user_v1_enums_user_enum_v1_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_api_user_v1_enums_user_enum_v1_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_api_user_v1_enums_user_enum_v1_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
+var file_api_user_v1_enums_user_enum_v1_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_api_user_v1_enums_user_enum_v1_proto_goTypes = []interface{}{
-	(UserStatusEnum_UserStatus)(0), // 0: user.api.user.userenumv1.UserStatusEnum.UserStatus
-	(UserSexEnum_UserSex)(0),       // 1: user.api.user.userenumv1.UserSexEnum.UserSex
-	(*UserStatusEnum)(nil),         // 2: user.api.user.userenumv1.UserStatusEnum
-	(*UserSexEnum)(nil),            // 3: user.api.user.userenumv1.UserSexEnum
+	(UserInitEnum_UserInit)(0),     // 0: user.api.user.userenumv1.UserInitEnum.UserInit
+	(UserStatusEnum_UserStatus)(0), // 1: user.api.user.userenumv1.UserStatusEnum.UserStatus
+	(UserGenderEnum_UserGender)(0), // 2: user.api.user.userenumv1.UserGenderEnum.UserGender
+	(*UserInitEnum)(nil),           // 3: user.api.user.userenumv1.UserInitEnum
+	(*UserStatusEnum)(nil),         // 4: user.api.user.userenumv1.UserStatusEnum
+	(*UserGenderEnum)(nil),         // 5: user.api.user.userenumv1.UserGenderEnum
 }
 var file_api_user_v1_enums_user_enum_v1_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -284,7 +374,7 @@ func file_api_user_v1_enums_user_enum_v1_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_api_user_v1_enums_user_enum_v1_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserStatusEnum); i {
+			switch v := v.(*UserInitEnum); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -296,7 +386,19 @@ func file_api_user_v1_enums_user_enum_v1_proto_init() {
 			}
 		}
 		file_api_user_v1_enums_user_enum_v1_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserSexEnum); i {
+			switch v := v.(*UserStatusEnum); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_api_user_v1_enums_user_enum_v1_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UserGenderEnum); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -313,8 +415,8 @@ func file_api_user_v1_enums_user_enum_v1_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_api_user_v1_enums_user_enum_v1_proto_rawDesc,
-			NumEnums:      2,
-			NumMessages:   2,
+			NumEnums:      3,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

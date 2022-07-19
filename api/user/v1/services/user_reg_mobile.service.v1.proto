@@ -1,0 +1,153 @@
+syntax = "proto3";
+
+package user.api.user.userservicev1;
+
+option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/services;userservicev1";
+option java_multiple_files = true;
+option java_package = "user.api.user.userservicev1";
+option java_outer_classname = "TbApiUserUserServiceV1";
+
+import "google/api/annotations.proto";
+import "github.com/ikaiguang/go-srv-user/api/user/v1/resources/user_reg_mobile.resource.v1.proto";
+
+// SrvUserRegMobile UserRegMobile service
+service SrvUserRegMobile {
+
+  /**
+   *
+   * @api {GET} /api/v1/UserRegMobile/GetById GetById
+   *
+   * @apiGroup UserRegMobile
+   *
+   * @apiName UserRegMobileGetById
+   *
+   * @apiUse UserRegMobileIdReq
+   *
+   * @apiUse UserRegMobile
+   *
+   */
+
+  // GetById get by id
+  rpc GetById(userv1.UserRegMobileIdReq) returns (userv1.UserRegMobile) {
+    option (google.api.http) = {
+      get : "/api/v1/UserRegMobile/GetById"
+      // body:"*" // WARN: GET xxx body should not be declared.
+    };
+  }
+
+  /**
+   *
+   * @api {GET} /api/v1/UserRegMobile/List List
+   *
+   * @apiGroup UserRegMobile
+   *
+   * @apiName UserRegMobileList
+   *
+   * @apiUse UserRegMobileListReq
+   *
+   * @apiUse PageRequest
+   *
+   * @apiUse UserRegMobileListResp
+   *
+   * @apiUse UserRegMobile
+   *
+   * @apiUse PageResponse
+   *
+   */
+
+  // List list
+  rpc List(userv1.UserRegMobileListReq) returns (userv1.UserRegMobileListResp) {
+    option (google.api.http) = {
+      get : "/api/v1/UserRegMobile/List"
+      // body:"*" // WARN: GET xxx body should not be declared.
+    };
+  }
+
+  /**
+   *
+   * @api {POST} /api/v1/UserRegMobile/Create Create
+   *
+   * @apiGroup UserRegMobile
+   *
+   * @apiName UserRegMobileCreate
+   *
+   * @apiUse UserRegMobileSaveReq
+   *
+   * @apiUse UserRegMobile
+   *
+   */
+
+  // Create create
+  rpc Create(userv1.UserRegMobileSaveReq) returns (userv1.UserRegMobile) {
+    option (google.api.http) = {
+      post : "/api/v1/UserRegMobile/Create"
+      body : "*"
+    };
+  }
+
+  /**
+   *
+   * @api {PUT} /api/v1/UserRegMobile/Update Update
+   *
+   * @apiGroup UserRegMobile
+   *
+   * @apiName UserRegMobileUpdate
+   *
+   * @apiUse UserRegMobileSaveReq
+   *
+   * @apiUse UserRegMobile
+   *
+   */
+
+  // Update update
+  rpc Update(userv1.UserRegMobileSaveReq) returns (userv1.UserRegMobile) {
+    option (google.api.http) = {
+      put : "/api/v1/UserRegMobile/Update"
+      body : "*"
+    };
+  }
+
+  /**
+   *
+   * @api {DELETE} /api/v1/UserRegMobile/Delete Delete
+   *
+   * @apiGroup UserRegMobile
+   *
+   * @apiName UserRegMobileDelete
+   *
+   * @apiUse UserRegMobileIdReq
+   *
+   * @apiUse UserRegMobileProcessResult
+   *
+   */
+
+  // Delete delete
+  rpc Delete(userv1.UserRegMobileIdReq) returns (userv1.UserRegMobileProcessResult) {
+    option (google.api.http) = {
+      delete : "/api/v1/UserRegMobile/Delete"
+      // body:"*" // WARN: DELETE xxx body should not be declared.
+    };
+  }
+
+  /**
+   *
+   * @api {DELETE} /api/v1/UserRegMobile/Destroy Destroy
+   *
+   * @apiGroup UserRegMobile
+   *
+   * @apiName UserRegMobileDestroy
+   *
+   * @apiUse UserRegMobileIdsReq
+   *
+   * @apiUse UserRegMobileProcessResult
+   *
+   */
+
+  // Destroy destroy
+  rpc Destroy(userv1.UserRegMobileIdsReq) returns (userv1.UserRegMobileProcessResult) {
+    option (google.api.http) = {
+      delete : "/api/v1/UserRegMobile/Destroy"
+      // body:"*" // WARN: DELETE xxx body should not be declared.
+    };
+  }
+}

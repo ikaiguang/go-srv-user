@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package user.api.org.orgcommonv1;
+
+option go_package = "github.com/ikaiguang/go-srv-user/api/org/v1/common;orgcommonv1";
+option java_multiple_files = true;
+option java_package = "user.api.org.orgcommonv1";
+option java_outer_classname = "TbApiOrgOrgCommonV1";
+
+/**
+ *
+ * @apiDefine OrgCommonEnum OrgCommonEnum
+ *
+ */
+
+/**
+ *
+ * @apiDefine OrgCommon OrgCommon
+ *
+ */
+
+// OrgCommonEnum OrgCommonEnum enum
+message OrgCommonEnum {
+  // OrgCommon OrgCommon enum
+  enum OrgCommon {
+    // UNSPECIFIED 未指定
+    UNSPECIFIED = 0;
+  }
+}

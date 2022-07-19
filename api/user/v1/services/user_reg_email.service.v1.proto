@@ -1,0 +1,153 @@
+syntax = "proto3";
+
+package user.api.user.userservicev1;
+
+option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/services;userservicev1";
+option java_multiple_files = true;
+option java_package = "user.api.user.userservicev1";
+option java_outer_classname = "TbApiUserUserServiceV1";
+
+import "google/api/annotations.proto";
+import "github.com/ikaiguang/go-srv-user/api/user/v1/resources/user_reg_email.resource.v1.proto";
+
+// SrvUserRegEmail UserRegEmail service
+service SrvUserRegEmail {
+
+  /**
+   *
+   * @api {GET} /api/v1/UserRegEmail/GetById GetById
+   *
+   * @apiGroup UserRegEmail
+   *
+   * @apiName UserRegEmailGetById
+   *
+   * @apiUse UserRegEmailIdReq
+   *
+   * @apiUse UserRegEmail
+   *
+   */
+
+  // GetById get by id
+  rpc GetById(userv1.UserRegEmailIdReq) returns (userv1.UserRegEmail) {
+    option (google.api.http) = {
+      get : "/api/v1/UserRegEmail/GetById"
+      // body:"*" // WARN: GET xxx body should not be declared.
+    };
+  }
+
+  /**
+   *
+   * @api {GET} /api/v1/UserRegEmail/List List
+   *
+   * @apiGroup UserRegEmail
+   *
+   * @apiName UserRegEmailList
+   *
+   * @apiUse UserRegEmailListReq
+   *
+   * @apiUse PageRequest
+   *
+   * @apiUse UserRegEmailListResp
+   *
+   * @apiUse UserRegEmail
+   *
+   * @apiUse PageResponse
+   *
+   */
+
+  // List list
+  rpc List(userv1.UserRegEmailListReq) returns (userv1.UserRegEmailListResp) {
+    option (google.api.http) = {
+      get : "/api/v1/UserRegEmail/List"
+      // body:"*" // WARN: GET xxx body should not be declared.
+    };
+  }
+
+  /**
+   *
+   * @api {POST} /api/v1/UserRegEmail/Create Create
+   *
+   * @apiGroup UserRegEmail
+   *
+   * @apiName UserRegEmailCreate
+   *
+   * @apiUse UserRegEmailSaveReq
+   *
+   * @apiUse UserRegEmail
+   *
+   */
+
+  // Create create
+  rpc Create(userv1.UserRegEmailSaveReq) returns (userv1.UserRegEmail) {
+    option (google.api.http) = {
+      post : "/api/v1/UserRegEmail/Create"
+      body : "*"
+    };
+  }
+
+  /**
+   *
+   * @api {PUT} /api/v1/UserRegEmail/Update Update
+   *
+   * @apiGroup UserRegEmail
+   *
+   * @apiName UserRegEmailUpdate
+   *
+   * @apiUse UserRegEmailSaveReq
+   *
+   * @apiUse UserRegEmail
+   *
+   */
+
+  // Update update
+  rpc Update(userv1.UserRegEmailSaveReq) returns (userv1.UserRegEmail) {
+    option (google.api.http) = {
+      put : "/api/v1/UserRegEmail/Update"
+      body : "*"
+    };
+  }
+
+  /**
+   *
+   * @api {DELETE} /api/v1/UserRegEmail/Delete Delete
+   *
+   * @apiGroup UserRegEmail
+   *
+   * @apiName UserRegEmailDelete
+   *
+   * @apiUse UserRegEmailIdReq
+   *
+   * @apiUse UserRegEmailProcessResult
+   *
+   */
+
+  // Delete delete
+  rpc Delete(userv1.UserRegEmailIdReq) returns (userv1.UserRegEmailProcessResult) {
+    option (google.api.http) = {
+      delete : "/api/v1/UserRegEmail/Delete"
+      // body:"*" // WARN: DELETE xxx body should not be declared.
+    };
+  }
+
+  /**
+   *
+   * @api {DELETE} /api/v1/UserRegEmail/Destroy Destroy
+   *
+   * @apiGroup UserRegEmail
+   *
+   * @apiName UserRegEmailDestroy
+   *
+   * @apiUse UserRegEmailIdsReq
+   *
+   * @apiUse UserRegEmailProcessResult
+   *
+   */
+
+  // Destroy destroy
+  rpc Destroy(userv1.UserRegEmailIdsReq) returns (userv1.UserRegEmailProcessResult) {
+    option (google.api.http) = {
+      delete : "/api/v1/UserRegEmail/Destroy"
+      // body:"*" // WARN: DELETE xxx body should not be declared.
+    };
+  }
+}

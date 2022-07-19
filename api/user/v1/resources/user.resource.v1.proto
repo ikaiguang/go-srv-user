@@ -2,105 +2,194 @@ syntax = "proto3";
 
 package user.api.user.userv1;
 
-// 多语言特定包名，用于源代码引用
 option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/resources;userv1";
 option java_multiple_files = true;
 option java_package = "user.api.user.userv1";
-option java_outer_classname = "UserApiUserUserV1";
+option java_outer_classname = "TbApiUserUserV1";
 
-import "github.com/ikaiguang/go-srv-user/api/user/v1/enums/user.enum.v1.proto";
+import "github.com/ikaiguang/go-srv-kit/api/page/v1/page.v1.proto";
 
-// LoginRequest 用户登录
-message LoginRequest {
-  string username = 1;
-  string password = 2;
-  string code = 3;
-}
+/**
+ *
+ * @apiDefine User user
+ *
+ * @apiSuccess (User) {uint64} id ID
+ * @apiSuccess (User) {string} user_uuid uuid
+ * @apiSuccess (User) {string} created_time 创建时间
+ * @apiSuccess (User) {string} updated_time 最后修改时间
+ * @apiSuccess (User) {string} deleted_time 删除时间
+ * @apiSuccess (User) {bool} is_deleted 是否已删除
+ * @apiSuccess (User) {string} user_email 邮箱
+ * @apiSuccess (User) {string} user_nickname 昵称
+ * @apiSuccess (User) {string} user_avatar 头像
+ * @apiSuccess (User) {string} user_gender 性别
+ * @apiSuccess (User) {string} user_status 状态
+ * @apiSuccess (User) {string} active_begin_time 激活开始时间
+ * @apiSuccess (User) {string} active_end_time 激活结束时间
+ * @apiSuccess (User) {string} disable_time 禁用时间
+ * @apiSuccess (User) {string} blacklist_time 黑名单时间
+ *
+ */
 
-// LoginResponse 用户登录
-message LoginResponse {
-  string token = 1;
-}
-
-// RegisterRequest 用户注册
-message RegisterRequest {
-  string username = 1;
-  string password = 2;
-  string code = 3;
-}
-
-// RegisterResponse 用户注册
-message RegisterResponse {
-  string token = 1;
-}
-
-// InfoRequest 用户信息
-message InfoRequest {
-}
-
-// Info 用户信息
-message Info {
+// User ENGINE InnoDB CHARSET utf8mb4 COMMENT '用户'
+message User {
+  // id ID
   uint64 id = 1;
-  string user_mobile = 2;
-  string user_email = 3;
-  string user_nickname = 4;
-  string user_avatar = 5;
-  userenumv1.UserSexEnum.UserSex user_sex = 6;
-  userenumv1.UserStatusEnum.UserStatus user_status = 7;
+  // user_uuid uuid
+  string user_uuid = 2;
+  // created_time 创建时间
+  string created_time = 3;
+  // updated_time 最后修改时间
+  string updated_time = 4;
+  // deleted_time 删除时间
+  string deleted_time = 5;
+  // is_deleted 是否已删除
+  bool is_deleted = 6;
+  // user_email 邮箱
+  string user_email = 7;
+  // user_nickname 昵称
+  string user_nickname = 8;
+  // user_avatar 头像
+  string user_avatar = 9;
+  // user_gender 性别
+  string user_gender = 10;
+  // user_status 状态
+  string user_status = 11;
+  // active_begin_time 激活开始时间
+  string active_begin_time = 12;
+  // active_end_time 激活结束时间
+  string active_end_time = 13;
+  // disable_time 禁用时间
+  string disable_time = 14;
+  // blacklist_time 黑名单时间
+  string blacklist_time = 15;
 }
 
-// ChangePasswordRequest 修改密码
-message ChangePasswordRequest {
-  string old_password = 1;
-  string new_password = 2;
-  string new_password_confirm = 3;
+/**
+ *
+ * @apiDefine UserSaveReq UserSaveReq
+ *
+ * @apiParam (UserSaveReq) {uint64} id ID
+ * @apiParam (UserSaveReq) {string} user_uuid uuid
+ * @apiParam (UserSaveReq) {string} created_time 创建时间
+ * @apiParam (UserSaveReq) {string} updated_time 最后修改时间
+ * @apiParam (UserSaveReq) {string} deleted_time 删除时间
+ * @apiParam (UserSaveReq) {bool} is_deleted 是否已删除
+ * @apiParam (UserSaveReq) {string} user_email 邮箱
+ * @apiParam (UserSaveReq) {string} user_nickname 昵称
+ * @apiParam (UserSaveReq) {string} user_avatar 头像
+ * @apiParam (UserSaveReq) {string} user_gender 性别
+ * @apiParam (UserSaveReq) {string} user_status 状态
+ * @apiParam (UserSaveReq) {string} active_begin_time 激活开始时间
+ * @apiParam (UserSaveReq) {string} active_end_time 激活结束时间
+ * @apiParam (UserSaveReq) {string} disable_time 禁用时间
+ * @apiParam (UserSaveReq) {string} blacklist_time 黑名单时间
+ *
+ */
+
+// UserSaveReq save
+message UserSaveReq {
+  // id ID
+  uint64 id = 1;
+  // user_uuid uuid
+  string user_uuid = 2;
+  // created_time 创建时间
+  string created_time = 3;
+  // updated_time 最后修改时间
+  string updated_time = 4;
+  // deleted_time 删除时间
+  string deleted_time = 5;
+  // is_deleted 是否已删除
+  bool is_deleted = 6;
+  // user_email 邮箱
+  string user_email = 7;
+  // user_nickname 昵称
+  string user_nickname = 8;
+  // user_avatar 头像
+  string user_avatar = 9;
+  // user_gender 性别
+  string user_gender = 10;
+  // user_status 状态
+  string user_status = 11;
+  // active_begin_time 激活开始时间
+  string active_begin_time = 12;
+  // active_end_time 激活结束时间
+  string active_end_time = 13;
+  // disable_time 禁用时间
+  string disable_time = 14;
+  // blacklist_time 黑名单时间
+  string blacklist_time = 15;
 }
 
-// ChangePasswordResponse 修改密码
-message ChangePasswordResponse {
+/**
+ *
+ * @apiDefine UserIdReq UserIdReq
+ *
+ * @apiParam (UserIdReq) {int64} user_id id
+ *
+ */
+
+// UserIdReq id
+message UserIdReq {
+  // user_id id
+  int64 user_id = 1;
 }
 
-// ChangeAvatarRequest 修改头像
-message ChangeAvatarRequest {
-  string user_avatar = 2;
+/**
+ *
+ * @apiDefine UserIdsReq UserIdsReq
+ *
+ * @apiParam (UserIdsReq) {int64-array} user_ids ids
+ *
+ */
+
+// UserIdsReq ids
+message UserIdsReq {
+  // user_ids ids
+  repeated int64 user_ids = 1;
 }
 
-// ChangeAvatarResponse 修改头像
-message ChangeAvatarResponse {
+/**
+ *
+ * @apiDefine UserListReq UserListReq
+ *
+ * @apiParam (UserListReq) {kit.api.page.pagev1.PageRequest} page_request paging request
+ *
+ */
+
+// UserListReq list
+message UserListReq {
+  // page_request paging request
+  kit.api.page.pagev1.PageRequest page_request = 1;
 }
 
-// ChangeMobileRequest 修改手机号
-message ChangeMobileRequest {
-  string user_mobile = 2;
+/**
+ *
+ * @apiDefine UserListResp UserListResp
+ *
+ * @apiSuccess (UserListResp) {User-array} list User-array
+ * @apiSuccess (UserListResp) {kit.api.page.pagev1.PageResponse} page_info paging response
+ *
+ */
+
+// UserListResp list
+message UserListResp {
+  // list User-array
+  repeated User list = 1;
+  // page_info paging response
+  kit.api.page.pagev1.PageResponse page_info = 2;
 }
 
-// ChangeMobileResponse 修改手机号
-message ChangeMobileResponse {
-}
+/**
+ *
+ * @apiDefine UserProcessResult UserProcessResult
+ *
+ * @apiSuccess (UserProcessResult) {bool} success true or false
+ *
+ */
 
-// ChangeEmailRequest 修改邮箱
-message ChangeEmailRequest {
-  string user_email = 2;
-}
-
-// ChangeEmailResponse 修改邮箱
-message ChangeEmailResponse {
-}
-
-// ChangeNicknameRequest 修改昵称
-message ChangeNicknameRequest {
-  string user_nickname = 2;
-}
-
-// ChangeNicknameResponse 修改昵称
-message ChangeNicknameResponse {
-}
-
-// ChangeSexRequest 修改性别
-message ChangeSexRequest {
-  userenumv1.UserSexEnum.UserSex user_sex = 6;
-}
-
-// ChangeSexResponse 修改性别
-message ChangeSexResponse{
+// UserProcessResult process result
+message UserProcessResult {
+  // success true or false
+  bool success = 1;
 }

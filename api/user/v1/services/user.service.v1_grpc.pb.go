@@ -23,24 +23,18 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SrvUserClient interface {
-	// Login 用户登录
-	Login(ctx context.Context, in *resources.LoginRequest, opts ...grpc.CallOption) (*resources.LoginResponse, error)
-	// Register 用户注册
-	Register(ctx context.Context, in *resources.RegisterRequest, opts ...grpc.CallOption) (*resources.RegisterResponse, error)
-	// Info 用户信息
-	Info(ctx context.Context, in *resources.InfoRequest, opts ...grpc.CallOption) (*resources.Info, error)
-	// ChangePassword 用户修改密码
-	ChangePassword(ctx context.Context, in *resources.ChangePasswordRequest, opts ...grpc.CallOption) (*resources.ChangePasswordResponse, error)
-	// ChangeAvatar 用户修改头像
-	ChangeAvatar(ctx context.Context, in *resources.ChangeAvatarRequest, opts ...grpc.CallOption) (*resources.ChangeAvatarResponse, error)
-	// ChangeMobile 用户修改手机号
-	ChangeMobile(ctx context.Context, in *resources.ChangeMobileRequest, opts ...grpc.CallOption) (*resources.ChangeMobileResponse, error)
-	// ChangeEmail 用户修改邮箱
-	ChangeEmail(ctx context.Context, in *resources.ChangeEmailRequest, opts ...grpc.CallOption) (*resources.ChangeEmailResponse, error)
-	// ChangeNickname 用户修改昵称
-	ChangeNickname(ctx context.Context, in *resources.ChangeNicknameRequest, opts ...grpc.CallOption) (*resources.ChangeNicknameResponse, error)
-	// ChangeSex 用户修改性别
-	ChangeSex(ctx context.Context, in *resources.ChangeSexRequest, opts ...grpc.CallOption) (*resources.ChangeSexResponse, error)
+	// GetById get by id
+	GetById(ctx context.Context, in *resources.UserIdReq, opts ...grpc.CallOption) (*resources.User, error)
+	// List list
+	List(ctx context.Context, in *resources.UserListReq, opts ...grpc.CallOption) (*resources.UserListResp, error)
+	// Create create
+	Create(ctx context.Context, in *resources.UserSaveReq, opts ...grpc.CallOption) (*resources.User, error)
+	// Update update
+	Update(ctx context.Context, in *resources.UserSaveReq, opts ...grpc.CallOption) (*resources.User, error)
+	// Delete delete
+	Delete(ctx context.Context, in *resources.UserIdReq, opts ...grpc.CallOption) (*resources.UserProcessResult, error)
+	// Destroy destroy
+	Destroy(ctx context.Context, in *resources.UserIdsReq, opts ...grpc.CallOption) (*resources.UserProcessResult, error)
 }
 
 type srvUserClient struct {
@@ -51,81 +45,54 @@ func NewSrvUserClient(cc grpc.ClientConnInterface) SrvUserClient {
 	return &srvUserClient{cc}
 }
 
-func (c *srvUserClient) Login(ctx context.Context, in *resources.LoginRequest, opts ...grpc.CallOption) (*resources.LoginResponse, error) {
-	out := new(resources.LoginResponse)
-	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/Login", in, out, opts...)
+func (c *srvUserClient) GetById(ctx context.Context, in *resources.UserIdReq, opts ...grpc.CallOption) (*resources.User, error) {
+	out := new(resources.User)
+	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/GetById", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *srvUserClient) Register(ctx context.Context, in *resources.RegisterRequest, opts ...grpc.CallOption) (*resources.RegisterResponse, error) {
-	out := new(resources.RegisterResponse)
-	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/Register", in, out, opts...)
+func (c *srvUserClient) List(ctx context.Context, in *resources.UserListReq, opts ...grpc.CallOption) (*resources.UserListResp, error) {
+	out := new(resources.UserListResp)
+	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/List", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *srvUserClient) Info(ctx context.Context, in *resources.InfoRequest, opts ...grpc.CallOption) (*resources.Info, error) {
-	out := new(resources.Info)
-	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/Info", in, out, opts...)
+func (c *srvUserClient) Create(ctx context.Context, in *resources.UserSaveReq, opts ...grpc.CallOption) (*resources.User, error) {
+	out := new(resources.User)
+	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *srvUserClient) ChangePassword(ctx context.Context, in *resources.ChangePasswordRequest, opts ...grpc.CallOption) (*resources.ChangePasswordResponse, error) {
-	out := new(resources.ChangePasswordResponse)
-	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/ChangePassword", in, out, opts...)
+func (c *srvUserClient) Update(ctx context.Context, in *resources.UserSaveReq, opts ...grpc.CallOption) (*resources.User, error) {
+	out := new(resources.User)
+	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *srvUserClient) ChangeAvatar(ctx context.Context, in *resources.ChangeAvatarRequest, opts ...grpc.CallOption) (*resources.ChangeAvatarResponse, error) {
-	out := new(resources.ChangeAvatarResponse)
-	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/ChangeAvatar", in, out, opts...)
+func (c *srvUserClient) Delete(ctx context.Context, in *resources.UserIdReq, opts ...grpc.CallOption) (*resources.UserProcessResult, error) {
+	out := new(resources.UserProcessResult)
+	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *srvUserClient) ChangeMobile(ctx context.Context, in *resources.ChangeMobileRequest, opts ...grpc.CallOption) (*resources.ChangeMobileResponse, error) {
-	out := new(resources.ChangeMobileResponse)
-	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/ChangeMobile", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *srvUserClient) ChangeEmail(ctx context.Context, in *resources.ChangeEmailRequest, opts ...grpc.CallOption) (*resources.ChangeEmailResponse, error) {
-	out := new(resources.ChangeEmailResponse)
-	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/ChangeEmail", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *srvUserClient) ChangeNickname(ctx context.Context, in *resources.ChangeNicknameRequest, opts ...grpc.CallOption) (*resources.ChangeNicknameResponse, error) {
-	out := new(resources.ChangeNicknameResponse)
-	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/ChangeNickname", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *srvUserClient) ChangeSex(ctx context.Context, in *resources.ChangeSexRequest, opts ...grpc.CallOption) (*resources.ChangeSexResponse, error) {
-	out := new(resources.ChangeSexResponse)
-	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/ChangeSex", in, out, opts...)
+func (c *srvUserClient) Destroy(ctx context.Context, in *resources.UserIdsReq, opts ...grpc.CallOption) (*resources.UserProcessResult, error) {
+	out := new(resources.UserProcessResult)
+	err := c.cc.Invoke(ctx, "/user.api.user.userservicev1.SrvUser/Destroy", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -136,24 +103,18 @@ func (c *srvUserClient) ChangeSex(ctx context.Context, in *resources.ChangeSexRe
 // All implementations must embed UnimplementedSrvUserServer
 // for forward compatibility
 type SrvUserServer interface {
-	// Login 用户登录
-	Login(context.Context, *resources.LoginRequest) (*resources.LoginResponse, error)
-	// Register 用户注册
-	Register(context.Context, *resources.RegisterRequest) (*resources.RegisterResponse, error)
-	// Info 用户信息
-	Info(context.Context, *resources.InfoRequest) (*resources.Info, error)
-	// ChangePassword 用户修改密码
-	ChangePassword(context.Context, *resources.ChangePasswordRequest) (*resources.ChangePasswordResponse, error)
-	// ChangeAvatar 用户修改头像
-	ChangeAvatar(context.Context, *resources.ChangeAvatarRequest) (*resources.ChangeAvatarResponse, error)
-	// ChangeMobile 用户修改手机号
-	ChangeMobile(context.Context, *resources.ChangeMobileRequest) (*resources.ChangeMobileResponse, error)
-	// ChangeEmail 用户修改邮箱
-	ChangeEmail(context.Context, *resources.ChangeEmailRequest) (*resources.ChangeEmailResponse, error)
-	// ChangeNickname 用户修改昵称
-	ChangeNickname(context.Context, *resources.ChangeNicknameRequest) (*resources.ChangeNicknameResponse, error)
-	// ChangeSex 用户修改性别
-	ChangeSex(context.Context, *resources.ChangeSexRequest) (*resources.ChangeSexResponse, error)
+	// GetById get by id
+	GetById(context.Context, *resources.UserIdReq) (*resources.User, error)
+	// List list
+	List(context.Context, *resources.UserListReq) (*resources.UserListResp, error)
+	// Create create
+	Create(context.Context, *resources.UserSaveReq) (*resources.User, error)
+	// Update update
+	Update(context.Context, *resources.UserSaveReq) (*resources.User, error)
+	// Delete delete
+	Delete(context.Context, *resources.UserIdReq) (*resources.UserProcessResult, error)
+	// Destroy destroy
+	Destroy(context.Context, *resources.UserIdsReq) (*resources.UserProcessResult, error)
 	mustEmbedUnimplementedSrvUserServer()
 }
 
@@ -161,32 +122,23 @@ type SrvUserServer interface {
 type UnimplementedSrvUserServer struct {
 }
 
-func (UnimplementedSrvUserServer) Login(context.Context, *resources.LoginRequest) (*resources.LoginResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
+func (UnimplementedSrvUserServer) GetById(context.Context, *resources.UserIdReq) (*resources.User, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetById not implemented")
 }
-func (UnimplementedSrvUserServer) Register(context.Context, *resources.RegisterRequest) (*resources.RegisterResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Register not implemented")
+func (UnimplementedSrvUserServer) List(context.Context, *resources.UserListReq) (*resources.UserListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
-func (UnimplementedSrvUserServer) Info(context.Context, *resources.InfoRequest) (*resources.Info, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Info not implemented")
+func (UnimplementedSrvUserServer) Create(context.Context, *resources.UserSaveReq) (*resources.User, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
-func (UnimplementedSrvUserServer) ChangePassword(context.Context, *resources.ChangePasswordRequest) (*resources.ChangePasswordResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChangePassword not implemented")
+func (UnimplementedSrvUserServer) Update(context.Context, *resources.UserSaveReq) (*resources.User, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (UnimplementedSrvUserServer) ChangeAvatar(context.Context, *resources.ChangeAvatarRequest) (*resources.ChangeAvatarResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChangeAvatar not implemented")
+func (UnimplementedSrvUserServer) Delete(context.Context, *resources.UserIdReq) (*resources.UserProcessResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
-func (UnimplementedSrvUserServer) ChangeMobile(context.Context, *resources.ChangeMobileRequest) (*resources.ChangeMobileResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChangeMobile not implemented")
-}
-func (UnimplementedSrvUserServer) ChangeEmail(context.Context, *resources.ChangeEmailRequest) (*resources.ChangeEmailResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChangeEmail not implemented")
-}
-func (UnimplementedSrvUserServer) ChangeNickname(context.Context, *resources.ChangeNicknameRequest) (*resources.ChangeNicknameResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChangeNickname not implemented")
-}
-func (UnimplementedSrvUserServer) ChangeSex(context.Context, *resources.ChangeSexRequest) (*resources.ChangeSexResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChangeSex not implemented")
+func (UnimplementedSrvUserServer) Destroy(context.Context, *resources.UserIdsReq) (*resources.UserProcessResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Destroy not implemented")
 }
 func (UnimplementedSrvUserServer) mustEmbedUnimplementedSrvUserServer() {}
 
@@ -201,164 +153,110 @@ func RegisterSrvUserServer(s grpc.ServiceRegistrar, srv SrvUserServer) {
 	s.RegisterService(&SrvUser_ServiceDesc, srv)
 }
 
-func _SrvUser_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(resources.LoginRequest)
+func _SrvUser_GetById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(resources.UserIdReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SrvUserServer).Login(ctx, in)
+		return srv.(SrvUserServer).GetById(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.user.userservicev1.SrvUser/Login",
+		FullMethod: "/user.api.user.userservicev1.SrvUser/GetById",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SrvUserServer).Login(ctx, req.(*resources.LoginRequest))
+		return srv.(SrvUserServer).GetById(ctx, req.(*resources.UserIdReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SrvUser_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(resources.RegisterRequest)
+func _SrvUser_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(resources.UserListReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SrvUserServer).Register(ctx, in)
+		return srv.(SrvUserServer).List(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.user.userservicev1.SrvUser/Register",
+		FullMethod: "/user.api.user.userservicev1.SrvUser/List",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SrvUserServer).Register(ctx, req.(*resources.RegisterRequest))
+		return srv.(SrvUserServer).List(ctx, req.(*resources.UserListReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SrvUser_Info_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(resources.InfoRequest)
+func _SrvUser_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(resources.UserSaveReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SrvUserServer).Info(ctx, in)
+		return srv.(SrvUserServer).Create(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.user.userservicev1.SrvUser/Info",
+		FullMethod: "/user.api.user.userservicev1.SrvUser/Create",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SrvUserServer).Info(ctx, req.(*resources.InfoRequest))
+		return srv.(SrvUserServer).Create(ctx, req.(*resources.UserSaveReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SrvUser_ChangePassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(resources.ChangePasswordRequest)
+func _SrvUser_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(resources.UserSaveReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SrvUserServer).ChangePassword(ctx, in)
+		return srv.(SrvUserServer).Update(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.user.userservicev1.SrvUser/ChangePassword",
+		FullMethod: "/user.api.user.userservicev1.SrvUser/Update",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SrvUserServer).ChangePassword(ctx, req.(*resources.ChangePasswordRequest))
+		return srv.(SrvUserServer).Update(ctx, req.(*resources.UserSaveReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SrvUser_ChangeAvatar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(resources.ChangeAvatarRequest)
+func _SrvUser_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(resources.UserIdReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SrvUserServer).ChangeAvatar(ctx, in)
+		return srv.(SrvUserServer).Delete(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.user.userservicev1.SrvUser/ChangeAvatar",
+		FullMethod: "/user.api.user.userservicev1.SrvUser/Delete",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SrvUserServer).ChangeAvatar(ctx, req.(*resources.ChangeAvatarRequest))
+		return srv.(SrvUserServer).Delete(ctx, req.(*resources.UserIdReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SrvUser_ChangeMobile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(resources.ChangeMobileRequest)
+func _SrvUser_Destroy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(resources.UserIdsReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SrvUserServer).ChangeMobile(ctx, in)
+		return srv.(SrvUserServer).Destroy(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.api.user.userservicev1.SrvUser/ChangeMobile",
+		FullMethod: "/user.api.user.userservicev1.SrvUser/Destroy",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SrvUserServer).ChangeMobile(ctx, req.(*resources.ChangeMobileRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _SrvUser_ChangeEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(resources.ChangeEmailRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SrvUserServer).ChangeEmail(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/user.api.user.userservicev1.SrvUser/ChangeEmail",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SrvUserServer).ChangeEmail(ctx, req.(*resources.ChangeEmailRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _SrvUser_ChangeNickname_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(resources.ChangeNicknameRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SrvUserServer).ChangeNickname(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/user.api.user.userservicev1.SrvUser/ChangeNickname",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SrvUserServer).ChangeNickname(ctx, req.(*resources.ChangeNicknameRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _SrvUser_ChangeSex_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(resources.ChangeSexRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SrvUserServer).ChangeSex(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/user.api.user.userservicev1.SrvUser/ChangeSex",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SrvUserServer).ChangeSex(ctx, req.(*resources.ChangeSexRequest))
+		return srv.(SrvUserServer).Destroy(ctx, req.(*resources.UserIdsReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -371,40 +269,28 @@ var SrvUser_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*SrvUserServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Login",
-			Handler:    _SrvUser_Login_Handler,
+			MethodName: "GetById",
+			Handler:    _SrvUser_GetById_Handler,
 		},
 		{
-			MethodName: "Register",
-			Handler:    _SrvUser_Register_Handler,
+			MethodName: "List",
+			Handler:    _SrvUser_List_Handler,
 		},
 		{
-			MethodName: "Info",
-			Handler:    _SrvUser_Info_Handler,
+			MethodName: "Create",
+			Handler:    _SrvUser_Create_Handler,
 		},
 		{
-			MethodName: "ChangePassword",
-			Handler:    _SrvUser_ChangePassword_Handler,
+			MethodName: "Update",
+			Handler:    _SrvUser_Update_Handler,
 		},
 		{
-			MethodName: "ChangeAvatar",
-			Handler:    _SrvUser_ChangeAvatar_Handler,
+			MethodName: "Delete",
+			Handler:    _SrvUser_Delete_Handler,
 		},
 		{
-			MethodName: "ChangeMobile",
-			Handler:    _SrvUser_ChangeMobile_Handler,
-		},
-		{
-			MethodName: "ChangeEmail",
-			Handler:    _SrvUser_ChangeEmail_Handler,
-		},
-		{
-			MethodName: "ChangeNickname",
-			Handler:    _SrvUser_ChangeNickname_Handler,
-		},
-		{
-			MethodName: "ChangeSex",
-			Handler:    _SrvUser_ChangeSex_Handler,
+			MethodName: "Destroy",
+			Handler:    _SrvUser_Destroy_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

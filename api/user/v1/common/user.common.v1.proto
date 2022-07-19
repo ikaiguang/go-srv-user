@@ -2,24 +2,28 @@ syntax = "proto3";
 
 package user.api.user.usercommonv1;
 
-// 多语言特定包名，用于源代码引用
 option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/common;usercommonv1";
 option java_multiple_files = true;
 option java_package = "user.api.user.usercommonv1";
-option java_outer_classname = "UserApiUserUserCommonV1";
+option java_outer_classname = "TbApiUserUserCommonV1";
 
-// AuthTypeEnum 认证类型
-message AuthTypeEnum {
-  enum AuthType {
-    // USER_PASSWORD 用户名密码
-    USER_PASSWORD = 0;
-    // SMS_CODE 短信验证码
-    SMS_CODE = 1;
-    // WECHAT_LOGIN 微信登录
-    WECHAT_LOGIN = 2;
-    // ALIPAY_LOGIN 支付宝登录
-    ALIPAY_LOGIN = 3;
-    // TAOBAO_LOGIN 淘宝登录
-    TAOBAO_LOGIN = 4;
+/**
+ *
+ * @apiDefine UserCommonEnum UserCommonEnum
+ *
+ */
+
+/**
+ *
+ * @apiDefine UserCommon UserCommon
+ *
+ */
+
+// UserCommonEnum UserCommonEnum enum
+message UserCommonEnum {
+  // UserCommon UserCommon enum
+  enum UserCommon {
+    // UNSPECIFIED 未指定
+    UNSPECIFIED = 0;
   }
 }

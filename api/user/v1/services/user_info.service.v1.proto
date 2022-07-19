@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package user.api.user.userservicev1;
+
+option go_package = "github.com/ikaiguang/go-srv-user/api/user/v1/services;userservicev1";
+option java_multiple_files = true;
+option java_package = "user.api.user.userservicev1";
+option java_outer_classname = "TbApiUserUserServiceV1";
+
+import "google/api/annotations.proto";
+import "github.com/ikaiguang/go-srv-user/api/user/v1/resources/user.resource.v1.proto";
+import "github.com/ikaiguang/go-srv-user/api/user/v1/resources/user_auth.resource.v1.proto";
+
+// SrvUserInfo 管理员服务
+service SrvUserInfo {
+  // ChangeAvatar 管理员修改头像
+  rpc ChangeAvatar(userv1.ChangeAvatarReq) returns (userv1.ChangeAvatarResp) {
+    option (google.api.http) = {
+      put : "/api/v1/user/change-avatar"
+      body : "*"
+    };
+  }
+  // ChangeMobile 管理员修改手机号
+  rpc ChangeMobile(userv1.ChangeMobileReq) returns (userv1.ChangeMobileResp) {
+    option (google.api.http) = {
+      put : "/api/v1/user/change-mobile"
+      body : "*"
+    };
+  }
+  // ChangeEmail 管理员修改邮箱
+  rpc ChangeEmail(userv1.ChangeEmailReq) returns (userv1.ChangeEmailResp) {
+    option (google.api.http) = {
+      put : "/api/v1/user/change-email"
+      body : "*"
+    };
+  }
+  // ChangeNickname 管理员修改昵称
+  rpc ChangeNickname(userv1.ChangeNicknameReq) returns (userv1.ChangeNicknameResp) {
+    option (google.api.http) = {
+      put : "/api/v1/user/change-nickname"
+      body : "*"
+    };
+  }
+  // ChangeGender 管理员修改性别
+  rpc ChangeGender(userv1.ChangeGenderReq) returns (userv1.ChangeGenderResp) {
+    option (google.api.http) = {
+      put : "/api/v1/user/change-gender"
+      body : "*"
+    };
+  }
+}

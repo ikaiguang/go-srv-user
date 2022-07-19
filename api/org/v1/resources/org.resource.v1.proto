@@ -1,0 +1,189 @@
+syntax = "proto3";
+
+package user.api.org.orgv1;
+
+option go_package = "github.com/ikaiguang/go-srv-user/api/org/v1/resources;orgv1";
+option java_multiple_files = true;
+option java_package = "user.api.org.orgv1";
+option java_outer_classname = "TbApiOrgOrgV1";
+
+import "github.com/ikaiguang/go-srv-kit/api/page/v1/page.v1.proto";
+
+/**
+ *
+ * @apiDefine Org org
+ *
+ * @apiSuccess (Org) {uint64} id ID
+ * @apiSuccess (Org) {string} org_uuid uuid
+ * @apiSuccess (Org) {string} created_time 创建时间
+ * @apiSuccess (Org) {string} updated_time 最后修改时间
+ * @apiSuccess (Org) {string} deleted_time 删除时间
+ * @apiSuccess (Org) {bool} is_deleted 是否已删除
+ * @apiSuccess (Org) {string} org_email 邮箱
+ * @apiSuccess (Org) {string} org_name 名称
+ * @apiSuccess (Org) {string} org_logo logo
+ * @apiSuccess (Org) {string} org_status 状态
+ * @apiSuccess (Org) {string} active_begin_time 激活开始时间
+ * @apiSuccess (Org) {string} active_end_time 激活结束时间
+ * @apiSuccess (Org) {string} disable_time 禁用时间
+ * @apiSuccess (Org) {string} blacklist_time 黑名单时间
+ *
+ */
+
+// Org ENGINE InnoDB CHARSET utf8mb4 COMMENT '组织'
+message Org {
+  // id ID
+  uint64 id = 1;
+  // org_uuid uuid
+  string org_uuid = 2;
+  // created_time 创建时间
+  string created_time = 3;
+  // updated_time 最后修改时间
+  string updated_time = 4;
+  // deleted_time 删除时间
+  string deleted_time = 5;
+  // is_deleted 是否已删除
+  bool is_deleted = 6;
+  // org_email 邮箱
+  string org_email = 7;
+  // org_name 名称
+  string org_name = 8;
+  // org_logo logo
+  string org_logo = 9;
+  // org_status 状态
+  string org_status = 10;
+  // active_begin_time 激活开始时间
+  string active_begin_time = 11;
+  // active_end_time 激活结束时间
+  string active_end_time = 12;
+  // disable_time 禁用时间
+  string disable_time = 13;
+  // blacklist_time 黑名单时间
+  string blacklist_time = 14;
+}
+
+/**
+ *
+ * @apiDefine OrgSaveReq OrgSaveReq
+ *
+ * @apiParam (OrgSaveReq) {uint64} id ID
+ * @apiParam (OrgSaveReq) {string} org_uuid uuid
+ * @apiParam (OrgSaveReq) {string} created_time 创建时间
+ * @apiParam (OrgSaveReq) {string} updated_time 最后修改时间
+ * @apiParam (OrgSaveReq) {string} deleted_time 删除时间
+ * @apiParam (OrgSaveReq) {bool} is_deleted 是否已删除
+ * @apiParam (OrgSaveReq) {string} org_email 邮箱
+ * @apiParam (OrgSaveReq) {string} org_name 名称
+ * @apiParam (OrgSaveReq) {string} org_logo logo
+ * @apiParam (OrgSaveReq) {string} org_status 状态
+ * @apiParam (OrgSaveReq) {string} active_begin_time 激活开始时间
+ * @apiParam (OrgSaveReq) {string} active_end_time 激活结束时间
+ * @apiParam (OrgSaveReq) {string} disable_time 禁用时间
+ * @apiParam (OrgSaveReq) {string} blacklist_time 黑名单时间
+ *
+ */
+
+// OrgSaveReq save
+message OrgSaveReq {
+  // id ID
+  uint64 id = 1;
+  // org_uuid uuid
+  string org_uuid = 2;
+  // created_time 创建时间
+  string created_time = 3;
+  // updated_time 最后修改时间
+  string updated_time = 4;
+  // deleted_time 删除时间
+  string deleted_time = 5;
+  // is_deleted 是否已删除
+  bool is_deleted = 6;
+  // org_email 邮箱
+  string org_email = 7;
+  // org_name 名称
+  string org_name = 8;
+  // org_logo logo
+  string org_logo = 9;
+  // org_status 状态
+  string org_status = 10;
+  // active_begin_time 激活开始时间
+  string active_begin_time = 11;
+  // active_end_time 激活结束时间
+  string active_end_time = 12;
+  // disable_time 禁用时间
+  string disable_time = 13;
+  // blacklist_time 黑名单时间
+  string blacklist_time = 14;
+}
+
+/**
+ *
+ * @apiDefine OrgIdReq OrgIdReq
+ *
+ * @apiParam (OrgIdReq) {int64} org_id id
+ *
+ */
+
+// OrgIdReq id
+message OrgIdReq {
+  // org_id id
+  int64 org_id = 1;
+}
+
+/**
+ *
+ * @apiDefine OrgIdsReq OrgIdsReq
+ *
+ * @apiParam (OrgIdsReq) {int64-array} org_ids ids
+ *
+ */
+
+// OrgIdsReq ids
+message OrgIdsReq {
+  // org_ids ids
+  repeated int64 org_ids = 1;
+}
+
+/**
+ *
+ * @apiDefine OrgListReq OrgListReq
+ *
+ * @apiParam (OrgListReq) {kit.api.page.pagev1.PageRequest} page_request paging request
+ *
+ */
+
+// OrgListReq list
+message OrgListReq {
+  // page_request paging request
+  kit.api.page.pagev1.PageRequest page_request = 1;
+}
+
+/**
+ *
+ * @apiDefine OrgListResp OrgListResp
+ *
+ * @apiSuccess (OrgListResp) {Org-array} list Org-array
+ * @apiSuccess (OrgListResp) {kit.api.page.pagev1.PageResponse} page_info paging response
+ *
+ */
+
+// OrgListResp list
+message OrgListResp {
+  // list Org-array
+  repeated Org list = 1;
+  // page_info paging response
+  kit.api.page.pagev1.PageResponse page_info = 2;
+}
+
+/**
+ *
+ * @apiDefine OrgProcessResult OrgProcessResult
+ *
+ * @apiSuccess (OrgProcessResult) {bool} success true or false
+ *
+ */
+
+// OrgProcessResult process result
+message OrgProcessResult {
+  // success true or false
+  bool success = 1;
+}
